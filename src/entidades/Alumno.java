@@ -6,6 +6,7 @@
 package entidades;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -14,10 +15,10 @@ import java.sql.Date;
 public class Alumno {
     
     private int id_alumno;
-    private String dni;
+    private int dni;
     private String nombre;
     private String apellido;
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private boolean estado;
     
     // constructor vacio
@@ -25,7 +26,7 @@ public class Alumno {
     }
     
     // constructor sin id
-    public Alumno(String dni, String nombre, String apellido, Date fechaNacimiento, boolean estado) {
+    public Alumno(int dni, String nombre, String apellido, LocalDate fechaNacimiento, boolean estado) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -34,7 +35,7 @@ public class Alumno {
     }
     
     // constructor con id
-    public Alumno(int id_alumno, String dni, String nombre, String apellido, Date fechaNacimiento, boolean estado) {
+    public Alumno(int id_alumno, int dni, String nombre, String apellido, LocalDate fechaNacimiento, boolean estado) {
         this.id_alumno = id_alumno;
         this.dni = dni;
         this.nombre = nombre;
@@ -51,11 +52,11 @@ public class Alumno {
         this.id_alumno = id_alumno;
     }
 
-    public String getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
@@ -75,11 +76,11 @@ public class Alumno {
         this.apellido = apellido;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
