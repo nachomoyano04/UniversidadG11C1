@@ -23,10 +23,7 @@ public class AlumnoData {
     
 
   public AlumnoData() {
-        
-            con = Conexion.getConexion();
-            
-        
+            con = Conexion.getConexion();        
     }
 
     public void guardarAlumno(Alumno alumno) {
@@ -52,7 +49,7 @@ public class AlumnoData {
         }
 
     }
-    public Alumno buscarAlumno(int id) {
+    public Alumno buscarAlumnoPorId(int id) {
         Alumno alumno = null;
         String sql = "SELECT  dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno=? AND estado = 1";
         PreparedStatement ps = null;
@@ -152,13 +149,12 @@ public class AlumnoData {
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
             ps.setInt(5, alumno.getId_alumno());
             int exito = ps.executeUpdate();
-            
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
-            } else {
+            }/*else {
                 JOptionPane.showMessageDialog(null, "El alumno no existe");
-            }
-
+            }*/
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno "+ex.getMessage());
         }

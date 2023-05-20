@@ -4,23 +4,23 @@ public class Materia {
     //atributos materia
     private int id_materia;
     private String nombre;
-    private int año;
+    private int anio;
     private boolean estado;
     
     // 3 constructores
     public Materia() {
     }
 
-    public Materia(int id_materia, String nombre, int año, boolean estado) {
+    public Materia(int id_materia, String nombre, int anio, boolean estado) {
         this.id_materia = id_materia;
         this.nombre = nombre;
-        this.año = año;
+        this.anio = anio;
         this.estado = estado;
     }
 
-    public Materia(String nombre, int año, boolean estado) {
+    public Materia(String nombre, int anio, boolean estado) {
         this.nombre = nombre;
-        this.año = año;
+        this.anio = anio;
         this.estado = estado;
     }
     
@@ -43,11 +43,11 @@ public class Materia {
     }
 
     public int getAño() {
-        return año;
+        return anio;
     }
 
-    public void setAño(int año) {
-        this.año = año;
+    public void setAño(int anio) {
+        this.anio = anio;
     }
 
     public boolean isEstado() {
@@ -62,7 +62,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return  nombre + " " + año + " " + estado;
+        return  nombre + " " + anio + " " + estado;
     }
     
 }
