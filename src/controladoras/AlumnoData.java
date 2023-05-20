@@ -158,12 +158,9 @@ public class AlumnoData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno "+ex.getMessage());
         }
-        
-       
     }
 
     
-
     public void eliminarAlumno(int id) {
 
         try {

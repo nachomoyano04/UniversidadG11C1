@@ -7,7 +7,7 @@ package controladoras;
 
 /**
  *
- * @author nacho
+ * @author nacho y el trío Los Panchos
  */
 public class InscripcionData {
     

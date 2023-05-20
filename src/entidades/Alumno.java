@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author nacho
+ * @author nacho y el trío Los Panchos
  */
 public class Alumno {
     

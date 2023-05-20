@@ -7,7 +7,7 @@ package entidades;
 
 /**
  *
- * @author nacho
+ * @author nacho y el trío Los Panchos
  */
 public class Inscripcion {
     //atributos inscripcion
