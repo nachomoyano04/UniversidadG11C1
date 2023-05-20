@@ -42,11 +42,11 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public int getAño() {
+    public int getAnio() {
         return anio;
     }
 
-    public void setAño(int anio) {
+    public void setAnio(int anio) {
         this.anio = anio;
     }
 

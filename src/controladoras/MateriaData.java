@@ -32,7 +32,7 @@ public class MateriaData {
         try{
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS) ;
             ps.setString(1, materia.getNombre());
-            ps.setInt(2, materia.getAño());
+            ps.setInt(2, materia.getAnio());
             ps.setBoolean(1, materia.isEstado());
             ps.executeUpdate();
             ResultSet res = ps.getGeneratedKeys();
@@ -57,7 +57,7 @@ public class MateriaData {
                 materia = new Materia();
                 materia.setId_materia(res.getInt(id));
                 materia.setNombre(res.getString("nombre"));
-                materia.setAño(res.getInt("año"));
+                materia.setAnio(res.getInt("año"));
                 materia.setEstado(true);
             }else{
                 JOptionPane.showMessageDialog(null, "La materia no existe");
@@ -74,7 +74,7 @@ public class MateriaData {
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
-            ps.setInt(2, materia.getAño());
+            ps.setInt(2, materia.getAnio());
             ps.setInt(3, materia.getId_materia());
             int exito = ps.executeUpdate();
             if(exito == 1){
@@ -115,7 +115,7 @@ public class MateriaData {
                 Materia mat = new Materia();
                 mat.setId_materia(res.getInt("id_materia"));
                 mat.setNombre(res.getString("nombre"));
-                mat.setAño(res.getInt("año"));
+                mat.setAnio(res.getInt("año"));
                 mat.setEstado(true);
                 materias.add(mat);
             }
