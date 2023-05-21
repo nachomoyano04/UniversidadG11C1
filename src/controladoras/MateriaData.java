@@ -21,10 +21,9 @@ import javax.swing.JOptionPane;
 public class MateriaData {
     
     private Connection con = null;
-    private Conexion conexion;
 
     public MateriaData(){
-        con = conexion.getConexion();
+        con = Conexion.getConexion();
     }
     
     public void guardarMateria(Materia materia){
