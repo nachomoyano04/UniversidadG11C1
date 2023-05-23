@@ -46,19 +46,21 @@ public class InscripcionData {
         }
     }
     
-    public ArrayList <Inscripcion> obtenerMCursadas(){
+    public ArrayList <Inscripcion> obtenerInscripciones(){
         ArrayList <Inscripcion> inscripciones = new ArrayList();
         //consulta que muestra todas las inscripciones habidas y por haber
         String sql = "SELECT m.nombre, a.nombre FROM materia m JOIN inscribir i ON m.id_materia = i.id_materia JOIN alumno a ON a.id_alumno = i.id_alumno";
         PreparedStatement ps = null;
+        AlumnoData ad = new AlumnoData();
+        MateriaData md = new MateriaData();
         try{
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet res = ps.getGeneratedKeys();
             if(res.next()){
                 Inscripcion insc = new Inscripcion();
                 insc.setId_inscripcion(res.getInt("id_inscripcion"));
-                insc.setAlumno(buscarAlumno(res.getInt("id_alumno")));
-                insc.setMateria(buscarMateria(res.getInt("id_materia")));
+                insc.setAlumno(ad.buscarAlumnoPorId(res.getInt("id_alumno")));
+                insc.setMateria(md.buscarMateria(res.getInt("id_materia")));
                 insc.setNota(res.getDouble("nota"));
                 inscripciones.add(insc);
             }
@@ -69,19 +71,21 @@ public class InscripcionData {
         return inscripciones;
     }
     
-    public ArrayList <Inscripcion> obtenerMCursadasPorAlumno(int id){
+    public ArrayList <Inscripcion> obtenerInscripcionesporAlumno(int id){
         ArrayList<Inscripcion> inscripciones = new ArrayList();
         // consulta que devuelva la lista de inscripciones en las que esta el alumno sin importar que la materia este activa o no
         String sql = "SELECT m.nombre FROM materia m JOIN inscribir i ON m.id_materia = i.id_materia WHERE id_alumno = ?";
         PreparedStatement ps = null;
+        AlumnoData ad = new AlumnoData();
+        MateriaData md = new MateriaData();
         try{
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet res = ps.getGeneratedKeys();
             if(res.next()){
                 Inscripcion insc = new Inscripcion();
                 insc.setId_inscripcion(id);
-                insc.setAlumno(buscarAlumno(res.getInt("id_alumno")));
-                insc.setMateria(buscarMateria(res.getInt("id_materia")));
+                insc.setAlumno(ad.buscarAlumnoPorId(res.getInt("id_alumno")));
+                insc.setMateria(md.buscarMateria(res.getInt("id_materia")));
                 insc.setNota(res.getInt("nota"));
                 inscripciones.add(insc);
             }
@@ -91,60 +95,7 @@ public class InscripcionData {
         } 
         return inscripciones;
     }
-    
-    public Alumno buscarAlumno(int id) {
-        Alumno alumno = null;
-        String sql = "SELECT  dni, apellido, nombre, fechaNacimiento FROM alumno WHERE id_alumno=? AND estado = 1";
-        PreparedStatement ps = null;
-        try {
-            ps = con.prepareStatement(sql);
-            ps.setInt(1,id );
-            ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
-                alumno=new Alumno();
-                alumno.setId_alumno(rs.getInt(id));
-                alumno.setDni(rs.getInt("dni"));
-                alumno.setApellido(rs.getString("apellido"));
-                alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setEstado(true);
-               
-
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe el alumno");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno "+ex.getMessage());
-        }
-
-        return alumno;
-    }
-    
-    public Materia buscarMateria(int id){
-        Materia materia = null;
-        String sql = "SELECT nombre, año FROM materia WHERE estado=1";
-        try{
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, id);
-            ResultSet res = ps.getGeneratedKeys();
-            if(res.next()){
-                materia = new Materia();
-                materia.setId_materia(res.getInt(id));
-                materia.setNombre(res.getString("nombre"));
-                materia.setAnio(res.getInt("año"));
-                materia.setEstado(true);
-            }else{
-                JOptionPane.showMessageDialog(null, "La materia no existe");
-            }
-            ps.close();
-        } catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al buscar materia "+ex.getMessage());
-        }
-        return materia;
-    }
-    
     public ArrayList <Materia> obtenerMateriasCursadas(int id){
         ArrayList <Materia> materias = new ArrayList();
         //Consulta que devuelve la lista de materias activas que esta inscripto el id que viene por parametro
@@ -192,9 +143,63 @@ public class InscripcionData {
         return materias;
     }
     
-    public void desInscribir(int id_alumno, int id_materia){}
-    public void desInscribir2(int id_alumno){};
+    public void borrarInscripcionMateriaAlumno(int id_alumno, int id_materia){
+        String sql = "DELETE FROM inscribir WHERE id_alumno = ? AND id_materia = ?";
+        PreparedStatement ps = null;
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id_alumno);
+            ps.setInt(2, id_materia);
+            int exito = ps.executeUpdate();
+            if(exito == 1){
+                JOptionPane.showMessageDialog(null,"Inscripcion borrada con éxito");
+            }
+            ps.close();
+        } catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al borrar inscripción "+ex.getMessage());
+        }
+    }
+    public void actualizarNota(int id_alumno, int id_materia, double nota){
+        String sql = "UPDATE inscribir SET nota = ? WHERE id_alumno = ? AND id_materia = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setDouble(1, nota);
+            ps.setInt(2, id_alumno);
+            ps.setInt(3, id_materia);
+            int exito = ps.executeUpdate();
+            if(exito == 1){
+                JOptionPane.showMessageDialog(null,"Nota actualizada con éxito");
+            }
+            ps.close();
+        } catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al actualizar nota");
+        }
+    };
     
-    public void actualizarNota(int id_alumno, int id_materia){};
+    public ArrayList<Alumno> obtenerAlumnosXMateria(int id_materia){
+        ArrayList<Alumno>alumnos = new ArrayList();
+        String sql = "SELECT a.nombre FROM alumno a JOIN inscribir i ON a.id_alumno = i.id_alumno JOIN materia m ON m.id_materia = i.id_materia WHERE i.id_materia = ?";
+        PreparedStatement ps = null;
+        try{
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ResultSet res = ps.getGeneratedKeys();
+            ps.setInt(1, id_materia);
+            if(res.next()){
+                Alumno alumno = new Alumno();
+                alumno.setId_alumno(res.getInt("id_alumno"));
+                alumno.setNombre(res.getString("nombre"));
+                alumno.setApellido(res.getString("apellido"));
+                alumno.setDni(res.getInt("dni"));
+                alumno.setFechaNacimiento(res.getDate("fechaNacimiento").toLocalDate());
+                alumno.setEstado(true);
+                alumnos.add(alumno);
+            }
+            ps.close();
+        } catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al obtener los alumnos "+ex.getMessage());
+        }
+        return alumnos;
+    };
     
 }
