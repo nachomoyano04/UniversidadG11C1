@@ -5,12 +5,12 @@
  */
 package universidadg11c1;
 
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import controladoras.AlumnoData;
+import controladoras.Conexion;
+import controladoras.MateriaData;
+import entidades.Alumno;
+import entidades.Materia;
+import java.time.LocalDate;
 
 /**
  *
@@ -22,22 +22,55 @@ public class UniversidadG11C1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/universidad","root","");
-            String sql="INSERT INTO alumno(nombre,apellido,dni,fechaNacimiento,estado) VALUES ('Diego','Arjona',33333333,'1964-01-19',true)";
-            PreparedStatement ps = conexion.prepareStatement(sql);
-            int resultado = ps.executeUpdate();
-            if(resultado > 0){
-                JOptionPane.showMessageDialog(null, "Alumno Agregado");
-            }else{
-                JOptionPane.showMessageDialog(null, "Error al agregar el alumno");
-            }
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar los drivers de conexión");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos");
+        /*DAR DE ALTA A ALUMNOS Y MATERIAS*/
+        Alumno alumno = new Alumno(6, 32323232, "Marcelo", "Gallardo", LocalDate.of(1978, 11, 19), true);
+        AlumnoData ad = new AlumnoData();
+        Materia materia = new Materia("Álgebra1", 6, true);
+        MateriaData md = new MateriaData();
+        //ad.guardarAlumno(alumno);
+        //md.guardarMateria(materia);
+
+        /*BUSQUEDA DE ALUMNOS*/
+        System.out.println("...Buscamos alumnos por id...");
+        System.out.println(ad.buscarAlumnoPorId(1));
+        System.out.println("...Buscamos materias por id...");
+        System.out.println(md.buscarMateria(1));
+        System.out.println("...Buscamos alumnos por DNI...");
+        System.out.println(ad.buscarAlumnoPorDni(34556566));
+        System.out.println("\n...Lista de alumnos...");
+        for (Alumno listarAlumno : ad.listarAlumnos()) {
+            System.out.println(listarAlumno);
         }
+        System.out.println("...Modificamos alumno...");
+        ad.modificarAlumno(alumno);
+        System.out.println("...Eliminamos un alumno...");
+        ad.eliminarAlumno(2);
+        System.out.println("\n...Lista de alumnos...");
+        for (Alumno listarAlumno : ad.listarAlumnos()) {
+            System.out.println(listarAlumno);
+        }
+        System.out.println("...Lo activamos nuevamente...");
+        ad.activarAlumno(2);
+        System.out.println("Buscamos la materia con id 3");
+        System.out.println(md.buscarMateria(3).getNombre());
+        System.out.println("Modificamos una materia");
+        md.modificarMateria(materia);
+        for (Materia listarMateria : md.listarMaterias()) {
+            System.out.println(listarMateria);
+        }
+        
+        /*
+        
+        
+        
+        
+        
+
+                modificarMateriamodificarMateria
+        elminarMateria
+        listarMaterias
+        activarMateria
+         */
     }
-    
+
 }

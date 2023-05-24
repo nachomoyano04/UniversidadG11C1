@@ -32,7 +32,7 @@ public class MateriaData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS) ;
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
-            ps.setBoolean(1, materia.isEstado());
+            ps.setBoolean(3, materia.isEstado());
             ps.executeUpdate();
             ResultSet res = ps.getGeneratedKeys();
             if(res.next()){
@@ -47,19 +47,18 @@ public class MateriaData {
     
     public Materia buscarMateria(int id){
         Materia materia = null;
-        String sql = "SELECT nombre, año FROM materia WHERE estado=1";
+        String sql = "SELECT nombre, año FROM materia WHERE estado=1 AND id_materia = ?";
+        PreparedStatement ps = null;
         try{
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            ResultSet res = ps.getGeneratedKeys();
+            ResultSet res = ps.executeQuery();
             if(res.next()){
                 materia = new Materia();
-                materia.setId_materia(res.getInt(id));
+                materia.setId_materia(id);
                 materia.setNombre(res.getString("nombre"));
                 materia.setAnio(res.getInt("año"));
                 materia.setEstado(true);
-            }else{
-                JOptionPane.showMessageDialog(null, "La materia no existe");
             }
             ps.close();
         } catch(SQLException ex) {
@@ -68,7 +67,7 @@ public class MateriaData {
         return materia;
     }
     
-    public Materia modificarMateria(/*int id,*/ Materia materia){
+    public Materia modificarMateria(Materia materia){
         String sql = "UPDATE materia SET nombre = ?, año = ? WHERE id_materia = ?";
         try{
             PreparedStatement ps = con.prepareStatement(sql);
@@ -105,11 +104,10 @@ public class MateriaData {
 
     public ArrayList<Materia> listarMaterias(){
         ArrayList<Materia>materias = new ArrayList();
-        String sql = "SELECT * FROM materia WHERE estado = true";
-        PreparedStatement ps = null;
-        try{
-            ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ResultSet res = ps.getGeneratedKeys();
+        try{        
+            String sql = "SELECT * FROM materia WHERE estado = 1";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet res = ps.executeQuery();
             if(res.next()){
                 Materia mat = new Materia();
                 mat.setId_materia(res.getInt("id_materia"));

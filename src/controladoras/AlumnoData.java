@@ -57,10 +57,9 @@ public class AlumnoData {
             ps = con.prepareStatement(sql);
             ps.setInt(1,id );
             ResultSet rs = ps.executeQuery();
-
             if (rs.next()) {
                 alumno=new Alumno();
-                alumno.setId_alumno(rs.getInt(id));
+                alumno.setId_alumno(id);
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
@@ -140,20 +139,20 @@ public class AlumnoData {
 
         String sql = "UPDATE alumno SET dni = ? , apellido = ?, nombre = ?, fechaNacimiento = ? WHERE  id_alumno = ?";
         PreparedStatement ps = null;
-
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));            
             ps.setInt(5, alumno.getId_alumno());
             int exito = ps.executeUpdate();
+            System.out.println(exito);
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
-            }/*else {
+            }else {
                 JOptionPane.showMessageDialog(null, "El alumno no existe");
-            }*/
+            }
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno "+ex.getMessage());
