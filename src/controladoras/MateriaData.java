@@ -108,7 +108,7 @@ public class MateriaData {
             String sql = "SELECT * FROM materia WHERE estado = 1";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet res = ps.executeQuery();
-            if(res.next()){
+            while(res.next()){
                 Materia mat = new Materia();
                 mat.setId_materia(res.getInt("id_materia"));
                 mat.setNombre(res.getString("nombre"));

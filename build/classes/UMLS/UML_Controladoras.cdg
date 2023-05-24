@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="controladoras">
+  <ClassDiagramComponents>
+    <Class name="AlumnoData" package="controladoras" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="guardarAlumno" returnType="void" visibility="public">
+          <Argument type="Alumno" name="alumno"/>
+        </Method>
+        <Method name="buscarAlumnoPorId" returnType="Alumno" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="buscarAlumnoPorDni" returnType="Alumno" visibility="public">
+          <Argument type="int" name="dni"/>
+        </Method>
+        <Method name="listarAlumnos" returnType="List&lt;Alumno&gt;" visibility="public"/>
+        <Method name="modificarAlumno" returnType="void" visibility="public">
+          <Argument type="Alumno" name="alumno"/>
+        </Method>
+        <Method name="eliminarAlumno" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="activarAlumno" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Conexion" package="controladoras" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="URL" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="DB" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="USUARIO" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="PASSWORD" type="String" visibility="private" isStatic="true"/>
+        <Field name="connection" type="Connection" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getConexion" returnType="Connection" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="InscripcionData" package="controladoras" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="inscribir" returnType="void" visibility="public">
+          <Argument type="Inscripcion" name="inscripcion"/>
+        </Method>
+        <Method name="obtenerInscripciones" returnType="ArrayList&lt;Inscripcion&gt;" visibility="public"/>
+        <Method name="obtenerInscripcionesporAlumno" returnType="ArrayList&lt;Inscripcion&gt;" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="obtenerMateriasCursadas" returnType="ArrayList&lt;Materia&gt;" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="obtenerMateriasNOCursadas" returnType="ArrayList&lt;Materia&gt;" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="borrarInscripcionMateriaAlumno" returnType="void" visibility="public">
+          <Argument type="int" name="id_alumno"/>
+          <Argument type="int" name="id_materia"/>
+        </Method>
+        <Method name="actualizarNota" returnType="void" visibility="public">
+          <Argument type="int" name="id_alumno"/>
+          <Argument type="int" name="id_materia"/>
+          <Argument type="double" name="nota"/>
+        </Method>
+        <Method name="obtenerAlumnosXMateria" returnType="ArrayList&lt;Alumno&gt;" visibility="public">
+          <Argument type="int" name="id_materia"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MateriaData" package="controladoras" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="guardarMateria" returnType="void" visibility="public">
+          <Argument type="Materia" name="materia"/>
+        </Method>
+        <Method name="buscarMateria" returnType="Materia" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="modificarMateria" returnType="Materia" visibility="public">
+          <Argument type="Materia" name="materia"/>
+        </Method>
+        <Method name="elminarMateria" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="listarMaterias" returnType="ArrayList&lt;Materia&gt;" visibility="public"/>
+        <Method name="activarMateria" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

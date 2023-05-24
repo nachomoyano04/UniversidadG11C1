@@ -6,7 +6,6 @@
 package universidadg11c1;
 
 import controladoras.AlumnoData;
-import controladoras.Conexion;
 import controladoras.MateriaData;
 import entidades.Alumno;
 import entidades.Materia;
@@ -51,6 +50,10 @@ public class UniversidadG11C1 {
         }
         System.out.println("...Lo activamos nuevamente...");
         ad.activarAlumno(2);
+        System.out.println("Lista de materias");
+        for (Materia li : md.listarMaterias()) {
+            System.out.println(li);
+        }
         System.out.println("Buscamos la materia con id 3");
         System.out.println(md.buscarMateria(3).getNombre());
         System.out.println("Modificamos una materia");
@@ -58,19 +61,13 @@ public class UniversidadG11C1 {
         for (Materia listarMateria : md.listarMaterias()) {
             System.out.println(listarMateria);
         }
-        
-        /*
-        
-        
-        
-        
-        
-
-                modificarMateriamodificarMateria
-        elminarMateria
-        listarMaterias
-        activarMateria
-         */
+        System.out.println("Eliminamos una materia");
+        md.elminarMateria(3);
+        for (Materia listarMateria : md.listarMaterias()) {
+            System.out.println(listarMateria);
+        }
+        System.out.println("Activamos una materia");
+        md.activarMateria(4);
     }
 
 }
