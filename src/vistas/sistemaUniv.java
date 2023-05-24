@@ -4,6 +4,10 @@
  */
 package vistas;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 /**
  *
  * @author marcel.olguin
@@ -15,6 +19,10 @@ public class sistemaUniv extends javax.swing.JFrame {
      */
     public sistemaUniv() {
         initComponents();
+        ImageIcon imagen = new ImageIcon("C:\\Users\\nacho\\OneDrive\\Documentos\\NetBeansProjects\\UniversidadG11C1\\src\\vistas\\logo-ulp.png");
+        JLabel fondoLabel = new JLabel(imagen);
+        fondoLabel.setBounds(0, 0, jDesktopPane1.getWidth(), jDesktopPane1.getHeight());
+        jDesktopPane1.add(fondoLabel, Integer.MIN_VALUE);
     }
 
     /**
@@ -42,6 +50,7 @@ public class sistemaUniv extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jDesktopPane1.setBackground(new java.awt.Color(51, 126, 240));
+        jDesktopPane1.setToolTipText("");
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
