@@ -7,6 +7,10 @@ package vistas;
 import controladoras.AlumnoData;
 import entidades.Alumno;
 import static java.lang.Integer.parseInt;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +34,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -50,7 +53,11 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         tf_FechaNacim = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         btn_AlumActivo = new javax.swing.JRadioButton();
+        btn_AlumActivo.setEnabled(false);
+        ;
         btn_AlumInactivo = new javax.swing.JRadioButton();
+        btn_AlumInactivo.setEnabled(false);
+        ;
 
         jLabel1.setText("Alumnos");
 
@@ -72,12 +79,32 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         });
 
         btnGuardarAlumno.setText("Guardar");
+        btnGuardarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarAlumnoActionPerformed(evt);
+            }
+        });
 
         tbnBorrarAlumno.setText("Borrar");
+        tbnBorrarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbnBorrarAlumnoActionPerformed(evt);
+            }
+        });
 
         btnActualizarAlumno.setText("Actualizar");
+        btnActualizarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarAlumnoActionPerformed(evt);
+            }
+        });
 
         btnLimpiarAlumno.setText("Limpiar");
+        btnLimpiarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarAlumnoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("DNI");
 
@@ -88,6 +115,11 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         });
 
         btnBuscarPorDNI.setText("Buscar");
+        btnBuscarPorDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPorDNIActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("APELLIDO");
 
@@ -96,8 +128,18 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         jLabel9.setText("ESTADO");
 
         btn_AlumActivo.setText("Activo");
+        btn_AlumActivo.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                btn_AlumActivoStateChanged(evt);
+            }
+        });
 
         btn_AlumInactivo.setText("Inactivo");
+        btn_AlumInactivo.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                btn_AlumInactivoStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,23 +243,119 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
 
     private void btnBuscarPorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorIDActionPerformed
         // TODO add your handling code here:
-        /*Alumno alum= new Alumno();
-        AlumnoData ad= new AlumnoData();
+       Alumno alum= new Alumno();
+       AlumnoData ad= new AlumnoData();
         
         alum = ad.buscarAlumnoPorId(parseInt(tf_idAlumno.getText()));
         if (alum!=null){
-            tf_dniAlumno.setText(alum.getDni());
+            tf_dniAlumno.setText(String.valueOf(alum.getDni()));
             tf_ApellidoAlum.setText(alum.getApellido());
             tf_NombreAlum.setText(alum.getApellido());
-            tf_FechaNacim.setText(alum.getFechaNacimiento());
+            tf_FechaNacim.setText(alum.getFechaNacimiento().toString());
+            btn_AlumActivo.setEnabled(true);
+            btn_AlumInactivo.setEnabled(true);
             if (alum.isEstado()){
-                btn_AlumActivo.set
-            }
-           
+                btn_AlumActivo.setSelected(true);
+            }else{
+                btn_AlumActivo.setSelected(false);
+            } 
+        }/*else{
+            JOptionPane.showMessageDialog(null, "Alumno no encontrado");
         }*/
  
     }//GEN-LAST:event_btnBuscarPorIDActionPerformed
+    
+    private void btnBuscarPorDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorDNIActionPerformed
+        
+        Alumno alum = new Alumno();
+        AlumnoData ad = new AlumnoData();
 
+        alum = ad.buscarAlumnoPorDni(parseInt(tf_dniAlumno.getText()));
+        if (alum != null) {
+            tf_idAlumno.setText(String.valueOf(alum.getId_alumno()));
+            tf_ApellidoAlum.setText(alum.getApellido());
+            tf_NombreAlum.setText(alum.getNombre());
+            tf_FechaNacim.setText(alum.getFechaNacimiento().toString());
+            btn_AlumActivo.setEnabled(true);
+            btn_AlumInactivo.setEnabled(true);
+            if (alum.isEstado()) {                
+                btn_AlumActivo.setSelected(true);
+            } else {
+                btn_AlumActivo.setSelected(false);
+            }
+        }/* else {
+            JOptionPane.showMessageDialog(null, "Alumno no encontrado");
+        }*/
+        
+    }//GEN-LAST:event_btnBuscarPorDNIActionPerformed
+
+    private void btnLimpiarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarAlumnoActionPerformed
+        tf_idAlumno.setText("");
+        tf_dniAlumno.setText("");
+        tf_ApellidoAlum.setText("");
+        tf_NombreAlum.setText("");
+        tf_dniAlumno.setText("");
+        tf_FechaNacim.setText("");
+        btn_AlumActivo.setSelected(false);
+        btn_AlumInactivo.setSelected(false);
+               
+    }//GEN-LAST:event_btnLimpiarAlumnoActionPerformed
+
+    private void btnGuardarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAlumnoActionPerformed
+        // TODO add your handling code here:
+        Alumno alum= new Alumno();
+        AlumnoData ad = new AlumnoData();
+       // LocalDate fecnac = LocalDate.parse(tf_FechaNacim.getText(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        alum.setDni(parseInt(tf_dniAlumno.getText()));
+        alum.setApellido(tf_ApellidoAlum.getText());
+        alum.setNombre(tf_NombreAlum.getText());
+        alum.setFechaNacimiento(LocalDate.parse(tf_FechaNacim.getText(),DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        alum.setEstado(true);
+        ad.guardarAlumno(alum);
+    }//GEN-LAST:event_btnGuardarAlumnoActionPerformed
+
+    private void tbnBorrarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnBorrarAlumnoActionPerformed
+        // TODO add your handling code here:
+        Alumno alum= new Alumno();
+        AlumnoData ad = new AlumnoData();
+        
+        if (!tf_idAlumno.getText().equals("")){
+            ad.eliminarAlumno(parseInt(tf_idAlumno.getText()));
+        }     
+    }//GEN-LAST:event_tbnBorrarAlumnoActionPerformed
+
+    private void btnActualizarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAlumnoActionPerformed
+        // TODO add your handling code here:
+        Alumno alum = new Alumno();
+        AlumnoData ad = new AlumnoData();
+         if (!tf_idAlumno.getText().equals("")){
+             alum.setId_alumno(parseInt(tf_idAlumno.getText()));
+             alum.setApellido(tf_ApellidoAlum.getText());
+             alum.setNombre(tf_NombreAlum.getText());
+             alum.setDni(parseInt(tf_dniAlumno.getText()));
+             alum.setFechaNacimiento(LocalDate.parse(tf_FechaNacim.getText(),DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+             if (btn_AlumActivo.isSelected()) {
+                 alum.setEstado(true);
+             }
+             if (btn_AlumInactivo.isSelected()) {;
+                 alum.setEstado(false);
+             }
+             ad.modificarAlumno(alum);
+         }
+         
+    }//GEN-LAST:event_btnActualizarAlumnoActionPerformed
+
+    private void btn_AlumActivoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btn_AlumActivoStateChanged
+        // TODO add your handling code here:
+        if (btn_AlumActivo.isSelected()) btn_AlumInactivo.setSelected(false);
+    }//GEN-LAST:event_btn_AlumActivoStateChanged
+
+    private void btn_AlumInactivoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btn_AlumInactivoStateChanged
+        // TODO add your handling code here:
+        if(btn_AlumInactivo.isSelected()) btn_AlumActivo.setSelected(false);
+    }//GEN-LAST:event_btn_AlumInactivoStateChanged
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarAlumno;
@@ -227,7 +365,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiarAlumno;
     private javax.swing.JRadioButton btn_AlumActivo;
     private javax.swing.JRadioButton btn_AlumInactivo;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

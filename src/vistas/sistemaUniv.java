@@ -21,8 +21,8 @@ public class sistemaUniv extends javax.swing.JFrame {
         initComponents();
         ImageIcon imagen = new ImageIcon("C:\\Users\\nacho\\OneDrive\\Documentos\\NetBeansProjects\\UniversidadG11C1\\src\\vistas\\logo-ulp.png");
         JLabel fondoLabel = new JLabel(imagen);
-        fondoLabel.setBounds(0, 0, jDesktopPane1.getWidth(), jDesktopPane1.getHeight());
-        jDesktopPane1.add(fondoLabel, Integer.MIN_VALUE);
+        fondoLabel.setBounds(0, 0, escritorio.getWidth(), escritorio.getHeight());
+        escritorio.add(fondoLabel, Integer.MIN_VALUE);
     }
 
     /**
@@ -34,7 +34,7 @@ public class sistemaUniv extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jArchivo = new javax.swing.JMenu();
         jmiAltaDeAlumnos = new javax.swing.JMenuItem();
@@ -49,23 +49,33 @@ public class sistemaUniv extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jDesktopPane1.setBackground(new java.awt.Color(51, 126, 240));
-        jDesktopPane1.setToolTipText("");
+        escritorio.setBackground(new java.awt.Color(51, 126, 240));
+        escritorio.setToolTipText("");
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 531, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 387, Short.MAX_VALUE)
         );
 
         jArchivo.setText("Archivo");
+        jArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jArchivoActionPerformed(evt);
+            }
+        });
 
         jmiAltaDeAlumnos.setText("Menu Alumnos");
+        jmiAltaDeAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAltaDeAlumnosActionPerformed(evt);
+            }
+        });
         jArchivo.add(jmiAltaDeAlumnos);
         jArchivo.add(jSeparator1);
 
@@ -102,11 +112,11 @@ public class sistemaUniv extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
 
         pack();
@@ -115,6 +125,21 @@ public class sistemaUniv extends javax.swing.JFrame {
     private void jmiInscribirEnMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInscribirEnMateriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiInscribirEnMateriaActionPerformed
+
+    private void jArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jArchivoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jArchivoActionPerformed
+
+    private void jmiAltaDeAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAltaDeAlumnosActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaAlumnos vistaAlum = new VistaAlumnos();
+        vistaAlum.setVisible(true);
+        escritorio.add(vistaAlum);
+        escritorio.moveToFront(vistaAlum);
+    }//GEN-LAST:event_jmiAltaDeAlumnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,10 +177,10 @@ public class sistemaUniv extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jArchivo;
     private javax.swing.JMenu jCargaNotas;
     private javax.swing.JMenu jConsultas;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jInscripciones;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
