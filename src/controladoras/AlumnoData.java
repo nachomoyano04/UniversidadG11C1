@@ -46,7 +46,7 @@ public class AlumnoData {
     }
     public Alumno buscarAlumnoPorId(int id) {
         Alumno alumno = null;
-        String sql = "SELECT  dni, apellido, nombre, fechaNacimiento FROM alumno WHERE id_alumno=? AND estado = 1";
+        String sql = "SELECT  dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE id_alumno=?";// AND estado = 1";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -59,9 +59,8 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setEstado(true);
-               
-
+                System.out.println("estado: "+rs.getBoolean("estado"));
+                alumno.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el alumno");
             }
@@ -75,7 +74,7 @@ public class AlumnoData {
     
     public Alumno buscarAlumnoPorDni(int dni) {
         Alumno alumno = null;
-        String sql = "SELECT id_alumno, dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni=? AND estado = 1";
+        String sql = "SELECT id_alumno, dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE dni=?";// AND estado = 1";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -89,7 +88,8 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setEstado(true);
+                alumno.setEstado(rs.getBoolean("estado"));
+                System.out.println("estado: "+rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el alumno");
             }
