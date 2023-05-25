@@ -22,7 +22,7 @@ public class UniversidadG11C1 {
      */
     public static void main(String[] args) {
         /*DAR DE ALTA A ALUMNOS Y MATERIAS*/
-        Alumno alumno = new Alumno(6, 32323232, "Marcelo", "Gallardo", LocalDate.of(1978, 11, 19), true);
+        Alumno alumno = new Alumno(6, 24688722, "Marcel", "Olguin", LocalDate.of(1976, 8, 12), true);
         AlumnoData ad = new AlumnoData();
         Materia materia = new Materia("Álgebra1", 6, true);
         MateriaData md = new MateriaData();
@@ -55,7 +55,11 @@ public class UniversidadG11C1 {
             System.out.println(li);
         }
         System.out.println("Buscamos la materia con id 3");
-        System.out.println(md.buscarMateria(3).getNombre());
+        if (md.buscarMateria(3)!=null){
+            System.out.println(md.buscarMateria(3).getNombre());
+        } else{
+            System.out.println("Materia no encontrada o inactiva.");
+        }
         System.out.println("Modificamos una materia");
         md.modificarMateria(materia);
         for (Materia listarMateria : md.listarMaterias()) {

@@ -2,7 +2,7 @@
 
 <ClassDiagram name="controladoras">
   <ClassDiagramComponents>
-    <Class name="AlumnoData" package="controladoras" visibility="public" xPosition="20.0" yPosition="20.0">
+    <Class name="AlumnoData" package="controladoras" visibility="public" xPosition="159.0" yPosition="20.0">
       <Fields>
         <Field name="con" type="Connection" visibility="private"/>
       </Fields>
@@ -31,7 +31,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Conexion" package="controladoras" visibility="public" xPosition="320.0" yPosition="20.0">
+    <Class name="Conexion" package="controladoras" visibility="public" xPosition="513.0" yPosition="20.0">
       <Fields>
         <Field name="URL" type="String" visibility="private" isStatic="true" isFinal="true"/>
         <Field name="DB" type="String" visibility="private" isStatic="true" isFinal="true"/>
@@ -46,7 +46,7 @@
         <Method name="getConexion" returnType="Connection" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Class name="InscripcionData" package="controladoras" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="InscripcionData" package="controladoras" visibility="public" xPosition="840.0" yPosition="20.0">
       <Fields>
         <Field name="con" type="Connection" visibility="private"/>
       </Fields>
@@ -81,7 +81,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="MateriaData" package="controladoras" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="MateriaData" package="controladoras" visibility="public" xPosition="487.0" yPosition="336.0">
       <Fields>
         <Field name="con" type="Connection" visibility="private"/>
       </Fields>

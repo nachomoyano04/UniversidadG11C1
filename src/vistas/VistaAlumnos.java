@@ -4,6 +4,10 @@
  */
 package vistas;
 
+import controladoras.AlumnoData;
+import entidades.Alumno;
+import static java.lang.Integer.parseInt;
+
 /**
  *
  * @author marcel.olguin
@@ -32,21 +36,21 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         tf_idAlumno = new javax.swing.JTextField();
         tf_NombreAlum = new javax.swing.JTextField();
-        btnBuscarAlum = new javax.swing.JButton();
+        btnBuscarPorID = new javax.swing.JButton();
         btnGuardarAlumno = new javax.swing.JButton();
         tbnBorrarAlumno = new javax.swing.JButton();
         btnActualizarAlumno = new javax.swing.JButton();
         btnLimpiarAlumno = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        tf_idAlumno1 = new javax.swing.JTextField();
-        btnBuscarAlum1 = new javax.swing.JButton();
+        tf_dniAlumno = new javax.swing.JTextField();
+        btnBuscarPorDNI = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        tf_NombreAlum1 = new javax.swing.JTextField();
+        tf_ApellidoAlum = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        tf_NombreAlum2 = new javax.swing.JTextField();
+        tf_FechaNacim = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        btn_AlumActivo = new javax.swing.JRadioButton();
+        btn_AlumInactivo = new javax.swing.JRadioButton();
 
         jLabel1.setText("Alumnos");
 
@@ -60,7 +64,12 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        btnBuscarAlum.setText("Buscar");
+        btnBuscarPorID.setText("Buscar");
+        btnBuscarPorID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPorIDActionPerformed(evt);
+            }
+        });
 
         btnGuardarAlumno.setText("Guardar");
 
@@ -72,13 +81,13 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
 
         jLabel6.setText("DNI");
 
-        tf_idAlumno1.addActionListener(new java.awt.event.ActionListener() {
+        tf_dniAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_idAlumno1ActionPerformed(evt);
+                tf_dniAlumnoActionPerformed(evt);
             }
         });
 
-        btnBuscarAlum1.setText("Buscar");
+        btnBuscarPorDNI.setText("Buscar");
 
         jLabel7.setText("APELLIDO");
 
@@ -86,9 +95,9 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
 
         jLabel9.setText("ESTADO");
 
-        jRadioButton1.setText("Activo");
+        btn_AlumActivo.setText("Activo");
 
-        jRadioButton2.setText("Inactivo");
+        btn_AlumInactivo.setText("Inactivo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,13 +124,13 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_NombreAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tf_idAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_idAlumno1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_NombreAlum1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_NombreAlum2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_dniAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_ApellidoAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_FechaNacim, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(btn_AlumActivo)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)))
+                                .addComponent(btn_AlumInactivo)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -131,8 +140,8 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscarAlum)
-                            .addComponent(btnBuscarAlum1))
+                            .addComponent(btnBuscarPorID)
+                            .addComponent(btnBuscarPorDNI))
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(212, 212, 212)
@@ -147,11 +156,11 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tf_idAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarAlum))
+                    .addComponent(btnBuscarPorID))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscarAlum1)
-                    .addComponent(tf_idAlumno1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarPorDNI)
+                    .addComponent(tf_dniAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -159,17 +168,17 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(tf_NombreAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_NombreAlum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_ApellidoAlum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_NombreAlum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_FechaNacim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(btn_AlumActivo)
+                    .addComponent(btn_AlumInactivo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarAlumno)
@@ -186,17 +195,38 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_idAlumnoActionPerformed
 
-    private void tf_idAlumno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idAlumno1ActionPerformed
+    private void tf_dniAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_dniAlumnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_idAlumno1ActionPerformed
+    }//GEN-LAST:event_tf_dniAlumnoActionPerformed
+
+    private void btnBuscarPorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorIDActionPerformed
+        // TODO add your handling code here:
+        /*Alumno alum= new Alumno();
+        AlumnoData ad= new AlumnoData();
+        
+        alum = ad.buscarAlumnoPorId(parseInt(tf_idAlumno.getText()));
+        if (alum!=null){
+            tf_dniAlumno.setText(alum.getDni());
+            tf_ApellidoAlum.setText(alum.getApellido());
+            tf_NombreAlum.setText(alum.getApellido());
+            tf_FechaNacim.setText(alum.getFechaNacimiento());
+            if (alum.isEstado()){
+                btn_AlumActivo.set
+            }
+           
+        }*/
+ 
+    }//GEN-LAST:event_btnBuscarPorIDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarAlumno;
-    private javax.swing.JButton btnBuscarAlum;
-    private javax.swing.JButton btnBuscarAlum1;
+    private javax.swing.JButton btnBuscarPorDNI;
+    private javax.swing.JButton btnBuscarPorID;
     private javax.swing.JButton btnGuardarAlumno;
     private javax.swing.JButton btnLimpiarAlumno;
+    private javax.swing.JRadioButton btn_AlumActivo;
+    private javax.swing.JRadioButton btn_AlumInactivo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -205,13 +235,11 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JButton tbnBorrarAlumno;
+    private javax.swing.JTextField tf_ApellidoAlum;
+    private javax.swing.JTextField tf_FechaNacim;
     private javax.swing.JTextField tf_NombreAlum;
-    private javax.swing.JTextField tf_NombreAlum1;
-    private javax.swing.JTextField tf_NombreAlum2;
+    private javax.swing.JTextField tf_dniAlumno;
     private javax.swing.JTextField tf_idAlumno;
-    private javax.swing.JTextField tf_idAlumno1;
     // End of variables declaration//GEN-END:variables
 }
