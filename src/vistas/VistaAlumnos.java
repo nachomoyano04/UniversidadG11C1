@@ -68,12 +68,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
 
         jl_nombreALumno.setText("NOMBRE");
 
-        tf_idAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_idAlumnoActionPerformed(evt);
-            }
-        });
-
         btnBuscarPorID.setText("Buscar");
         btnBuscarPorID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,12 +97,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         });
 
         jl_dniAlumno.setText("DNI");
-
-        tf_dniAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_dniAlumnoActionPerformed(evt);
-            }
-        });
 
         btnBuscarPorDNI.setText("Buscar");
         btnBuscarPorDNI.addActionListener(new java.awt.event.ActionListener() {
@@ -242,16 +230,7 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tf_idAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idAlumnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_idAlumnoActionPerformed
-
-    private void tf_dniAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_dniAlumnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_dniAlumnoActionPerformed
-
     private void btnBuscarPorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorIDActionPerformed
-        // TODO add your handling code here:
        Alumno alum= new Alumno();
        AlumnoData ad= new AlumnoData();
         
@@ -268,20 +247,14 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                 labelEstado.setBackground(new java.awt.Color(204, 204, 0));
                 labelEstado.setForeground(new java.awt.Color(0, 0, 255));
                 labelEstado.setText("Alumno Activo");
-                //btn_AlumActivo.setSelected(true);
             }else{      
                 labelEstado.setForeground(Color.red);
                 labelEstado.setText("Alumno Inactivo");
-                //btn_AlumActivo.setSelected(false);
             } 
-        }/*else{
-            JOptionPane.showMessageDialog(null, "Alumno no encontrado");
-        }*/
- 
+        } 
     }//GEN-LAST:event_btnBuscarPorIDActionPerformed
     
     private void btnBuscarPorDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorDNIActionPerformed
-        
         Alumno alum = new Alumno();
         AlumnoData ad = new AlumnoData();
 
@@ -298,16 +271,11 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                 labelEstado.setBackground(new java.awt.Color(204, 204, 0));
                 labelEstado.setForeground(new java.awt.Color(0, 0, 255));
                 labelEstado.setText("Alumno Activo");
-                //btn_AlumActivo.setSelected(true);
             } else {
                 labelEstado.setForeground(Color.red);
                 labelEstado.setText("Alumno Inactivo");
-                //btn_AlumActivo.setSelected(false);
             }
-        }/* else {
-            JOptionPane.showMessageDialog(null, "Alumno no encontrado");
-        }*/
-        
+        }       
     }//GEN-LAST:event_btnBuscarPorDNIActionPerformed
 
     private void btnLimpiarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarAlumnoActionPerformed
@@ -325,10 +293,8 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLimpiarAlumnoActionPerformed
 
     private void btnGuardarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAlumnoActionPerformed
-        // TODO add your handling code here:
         Alumno alum= new Alumno();
         AlumnoData ad = new AlumnoData();
-       // LocalDate fecnac = LocalDate.parse(tf_FechaNacim.getText(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         alum.setDni(parseInt(tf_dniAlumno.getText()));
         alum.setApellido(tf_ApellidoAlum.getText());
@@ -339,7 +305,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGuardarAlumnoActionPerformed
 
     private void btnActualizarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAlumnoActionPerformed
-        // TODO add your handling code here:
         Alumno alum = new Alumno();
         AlumnoData ad = new AlumnoData();
          if (!tf_idAlumno.getText().equals("")){
@@ -354,7 +319,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActualizarAlumnoActionPerformed
 
     private void btn_AlumActivoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btn_AlumActivoStateChanged
-        // TODO add your handling code here:
         AlumnoData ad=new AlumnoData();
         Alumno al=new Alumno();
         if (btn_AlumActivo.isSelected()) {
@@ -367,7 +331,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_AlumActivoStateChanged
 
     private void btn_AlumInactivoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btn_AlumInactivoStateChanged
-        // TODO add your handling code here:
         AlumnoData ad=new AlumnoData();
         Alumno al=new Alumno();
         if(btn_AlumInactivo.isSelected()) {

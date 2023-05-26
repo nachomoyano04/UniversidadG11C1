@@ -191,7 +191,6 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_BuscarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarMateriaActionPerformed
-        // TODO add your handling code here:
         Materia mat = new Materia();
         MateriaData md = new MateriaData();
         
@@ -214,7 +213,6 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_BuscarMateriaActionPerformed
 
     private void btn_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarActionPerformed
-        // TODO add your handling code here:
         Materia mat = new Materia();
         MateriaData md = new MateriaData();
         
@@ -227,7 +225,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_ActualizarActionPerformed
 
     private void btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimpiarActionPerformed
-        // TODO add your handling code here:
+
         tf_idMateria.setText("");
         tf_nombreMateria.setText("");
         tf_anioMateria.setText("");
@@ -238,7 +236,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_LimpiarActionPerformed
 
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
-        // TODO add your handling code here:
+
         Materia mat = new Materia();
         MateriaData md = new MateriaData();
         
@@ -250,7 +248,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_GuardarActionPerformed
 
     private void btn_MateriaActivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MateriaActivaActionPerformed
-        // TODO add your handling code here:
+
         Materia mat = new Materia();
         MateriaData md = new MateriaData();
         
@@ -265,7 +263,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_MateriaActivaActionPerformed
 
     private void btn_MateriaInactivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MateriaInactivaActionPerformed
-        // TODO add your handling code here:
+
         Materia mat = new Materia();
         MateriaData md = new MateriaData();
         

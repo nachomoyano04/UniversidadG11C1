@@ -64,11 +64,6 @@ public class sistemaUniv extends javax.swing.JFrame {
         );
 
         jArchivo.setText("Archivo");
-        jArchivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jArchivoActionPerformed(evt);
-            }
-        });
 
         jmiAltaDeAlumnos.setText("Menu Alumnos");
         jmiAltaDeAlumnos.addActionListener(new java.awt.event.ActionListener() {
@@ -131,13 +126,8 @@ public class sistemaUniv extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiInscribirEnMateriaActionPerformed
 
-    private void jArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jArchivoActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jArchivoActionPerformed
-
     private void jmiAltaDeAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAltaDeAlumnosActionPerformed
-        // TODO add your handling code here:
+
         escritorio.removeAll();
         escritorio.repaint();
         VistaAlumnos vistaAlum = new VistaAlumnos();
@@ -147,7 +137,7 @@ public class sistemaUniv extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAltaDeAlumnosActionPerformed
 
     private void jmiAltaDeMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAltaDeMateriasActionPerformed
-        // TODO add your handling code here:
+
         escritorio.removeAll();
         escritorio.repaint();
         VistaMaterias vistaMat = new VistaMaterias();

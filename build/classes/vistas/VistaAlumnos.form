@@ -157,9 +157,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tf_idAlumno">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_idAlumnoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tf_NombreAlum">
     </Component>
@@ -201,9 +198,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tf_dniAlumno">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_dniAlumnoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscarPorDNI">
       <Properties>

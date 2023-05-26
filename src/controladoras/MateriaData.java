@@ -77,9 +77,7 @@ public class MateriaData {
             int exito = ps.executeUpdate();
             if(exito == 1){
                 JOptionPane.showMessageDialog(null,"Materia modificada");
-            } /*else{
-                JOptionPane.showMessageDialog(null,"La materia no existe");
-            }*/
+            }
             ps.close();
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error al modificar materia "+ ex.getMessage());
@@ -97,6 +95,7 @@ public class MateriaData {
             if(exito == 1){
                 JOptionPane.showMessageDialog(null,"Materia eliminada");
             }
+            ps.close();
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error al eliminar materia " + ex.getMessage());
         }
