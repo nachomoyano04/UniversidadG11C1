@@ -56,11 +56,11 @@ public class sistemaUniv extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addGap(0, 765, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
 
         jArchivo.setText("Archivo");
@@ -80,6 +80,11 @@ public class sistemaUniv extends javax.swing.JFrame {
         jArchivo.add(jSeparator1);
 
         jmiAltaDeMaterias.setText("Menu Materias");
+        jmiAltaDeMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAltaDeMateriasActionPerformed(evt);
+            }
+        });
         jArchivo.add(jmiAltaDeMaterias);
 
         jMenuBar1.add(jArchivo);
@@ -140,6 +145,17 @@ public class sistemaUniv extends javax.swing.JFrame {
         escritorio.add(vistaAlum);
         escritorio.moveToFront(vistaAlum);
     }//GEN-LAST:event_jmiAltaDeAlumnosActionPerformed
+
+    private void jmiAltaDeMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAltaDeMateriasActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMaterias vistaMat = new VistaMaterias();
+        vistaMat.setVisible(true);
+        escritorio.add(vistaMat);
+        escritorio.moveToFront(vistaMat);
+        
+    }//GEN-LAST:event_jmiAltaDeMateriasActionPerformed
 
     /**
      * @param args the command line arguments

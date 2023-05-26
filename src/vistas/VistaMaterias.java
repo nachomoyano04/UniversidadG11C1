@@ -5,6 +5,11 @@
 
 package vistas;
 
+import controladoras.MateriaData;
+import entidades.Materia;
+import java.awt.Color;
+import static java.lang.Integer.parseInt;
+
 /**
  *
  * @author marcel.olguin
@@ -25,89 +30,81 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        tf_iDMat = new javax.swing.JTextField();
-        tfNombreMat = new javax.swing.JTextField();
-        btnBuscarMat = new javax.swing.JButton();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        btnBorrar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        tf_anioMat = new javax.swing.JTextField();
-        btnMatActiva = new javax.swing.JRadioButton();
-        btnMateriaInactiva = new javax.swing.JRadioButton();
+        jl_titulo = new javax.swing.JLabel();
+        jl_idMateria = new javax.swing.JLabel();
+        jl_nombreMateria = new javax.swing.JLabel();
+        tf_idMateria = new javax.swing.JTextField();
+        tf_nombreMateria = new javax.swing.JTextField();
+        btn_BuscarMateria = new javax.swing.JButton();
+        jl_anioMateria = new javax.swing.JLabel();
+        jl_estadoMateria = new javax.swing.JLabel();
+        tf_anioMateria = new javax.swing.JTextField();
+        btn_MateriaActiva = new javax.swing.JRadioButton();
+        btn_MateriaInactiva = new javax.swing.JRadioButton();
+        jLabelEstado = new javax.swing.JLabel();
+        btn_Guardar = new javax.swing.JButton();
+        btn_Limpiar = new javax.swing.JButton();
+        btn_Actualizar = new javax.swing.JButton();
 
         setTitle("Menu Materias");
 
-        jLabel1.setText("MATERIAS");
+        jl_titulo.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        jl_titulo.setText("MATERIAS");
 
-        jLabel2.setText("ID");
+        jl_idMateria.setText("ID");
 
-        jLabel3.setText("NOMBRE");
+        jl_nombreMateria.setText("NOMBRE");
 
-        btnBuscarMat.setText("Buscar");
-        btnBuscarMat.addActionListener(new java.awt.event.ActionListener() {
+        btn_BuscarMateria.setText("Buscar");
+        btn_BuscarMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarMatActionPerformed(evt);
+                btn_BuscarMateriaActionPerformed(evt);
             }
         });
 
-        btnBorrar.setText("Borrar");
+        jl_anioMateria.setText("AÑO");
 
-        btnLimpiar.setText("Limpiar");
+        jl_estadoMateria.setText("ESTADO");
 
-        btnGuardar.setText("Guardar");
-
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+        btn_MateriaActiva.setText("Activa");
+        btn_MateriaActiva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
+                btn_MateriaActivaActionPerformed(evt);
             }
         });
 
-        jLayeredPane1.setLayer(btnBorrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnLimpiar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnActualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        btn_MateriaInactiva.setText("Inactiva");
+        btn_MateriaInactiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MateriaInactivaActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addComponent(btnGuardar)
-                .addGap(18, 18, 18)
-                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLimpiar))
-        );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBorrar)
-                    .addComponent(btnLimpiar)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnActualizar))
-                .addContainerGap())
-        );
+        jLabelEstado.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        jLabelEstado.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEstado.setText("-----------");
 
-        jLabel4.setText("AÑO");
+        btn_Guardar.setText("Guardar");
+        btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GuardarActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setText("ESTADO");
+        btn_Limpiar.setText("Limpiar");
+        btn_Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LimpiarActionPerformed(evt);
+            }
+        });
 
-        btnMatActiva.setText("Activa");
-
-        btnMateriaInactiva.setText("Inactiva");
+        btn_Actualizar.setText("Actualizar");
+        btn_Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ActualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,101 +112,188 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(23, 23, 23)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jl_anioMateria)
+                                        .addComponent(jl_idMateria)
+                                        .addComponent(jl_estadoMateria))
+                                    .addGap(4, 4, 4))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jl_nombreMateria)))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tf_anioMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(tf_idMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_BuscarMateria))
+                                .addComponent(tf_nombreMateria, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btn_MateriaActiva)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btn_MateriaInactiva))
+                                .addComponent(jLabelEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btn_Guardar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn_Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn_Limpiar)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
-                                .addGap(4, 4, 4))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(tf_iDMat, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBuscarMat))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(tfNombreMat, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(131, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tf_anioMat, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMatActiva))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMateriaInactiva)
-                        .addGap(115, 115, 115))
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
+                        .addGap(80, 80, 80)
+                        .addComponent(jl_titulo)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(40, 40, 40)
+                .addGap(42, 42, 42)
+                .addComponent(jl_titulo)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_iDMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(btnBuscarMat))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfNombreMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jl_idMateria)
+                    .addComponent(tf_idMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_BuscarMateria))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_anioMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
+                    .addComponent(jl_nombreMateria)
+                    .addComponent(tf_nombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMateriaInactiva)
-                    .addComponent(btnMatActiva)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                    .addComponent(jl_anioMateria)
+                    .addComponent(tf_anioMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEstado)
+                    .addComponent(jl_estadoMateria))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_Limpiar)
+                            .addComponent(btn_Actualizar)
+                            .addComponent(btn_Guardar))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_MateriaInactiva)
+                            .addComponent(btn_MateriaActiva))
+                        .addGap(96, 96, 96))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMatActionPerformed
+    private void btn_BuscarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarMateriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarMatActionPerformed
+        Materia mat = new Materia();
+        MateriaData md = new MateriaData();
+        
+        mat = md.buscarMateria(parseInt(tf_idMateria.getText()));
+        if(mat != null){
+            tf_nombreMateria.setText(mat.getNombre());
+            tf_anioMateria.setText(String.valueOf(mat.getAnio()));
+            btn_MateriaActiva.setEnabled(true);
+            btn_MateriaInactiva.setEnabled(true);
+            if (mat.isEstado()){      
+                jLabelEstado.setOpaque(true);
+                jLabelEstado.setBackground(new java.awt.Color(204, 204, 0));
+                jLabelEstado.setForeground(new java.awt.Color(0, 0, 255));
+                jLabelEstado.setText("Materia Activa");               
+            }else{      
+                jLabelEstado.setForeground(Color.red);
+                jLabelEstado.setText("Materia Inactiva");
+            }        
+        }        
+    }//GEN-LAST:event_btn_BuscarMateriaActionPerformed
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    private void btn_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarActionPerformed
+        Materia mat = new Materia();
+        MateriaData md = new MateriaData();
+        
+        if(!tf_idMateria.getText().equals("")){
+            mat.setNombre(tf_nombreMateria.getText());
+            mat.setAnio(parseInt(tf_anioMateria.getText()));
+            md.modificarMateria(mat);
+        
+        }
+    }//GEN-LAST:event_btn_ActualizarActionPerformed
+
+    private void btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimpiarActionPerformed
+        // TODO add your handling code here:
+        tf_idMateria.setText("");
+        tf_nombreMateria.setText("");
+        tf_anioMateria.setText("");
+        btn_MateriaActiva.setSelected(false);
+        btn_MateriaInactiva.setSelected(false);
+        jLabelEstado.setText("");
+        jLabelEstado.setOpaque(false);
+    }//GEN-LAST:event_btn_LimpiarActionPerformed
+
+    private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
+        // TODO add your handling code here:
+        Materia mat = new Materia();
+        MateriaData md = new MateriaData();
+        
+        mat.setNombre(tf_nombreMateria.getText());
+        mat.setAnio(parseInt(tf_anioMateria.getText()));
+        mat.setEstado(true);
+        md.guardarMateria(mat);
+                
+    }//GEN-LAST:event_btn_GuardarActionPerformed
+
+    private void btn_MateriaActivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MateriaActivaActionPerformed
+        // TODO add your handling code here:
+        Materia mat = new Materia();
+        MateriaData md = new MateriaData();
+        
+        if(btn_MateriaActiva.isSelected()){
+            md.activarMateria(parseInt(tf_idMateria.getText()));
+            jLabelEstado.setOpaque(true);
+            jLabelEstado.setBackground(new java.awt.Color(204, 204, 0));
+            jLabelEstado.setForeground(new java.awt.Color(0, 0, 255));
+            jLabelEstado.setText("Materia Activa"); 
+        
+        }
+    }//GEN-LAST:event_btn_MateriaActivaActionPerformed
+
+    private void btn_MateriaInactivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MateriaInactivaActionPerformed
+        // TODO add your handling code here:
+        Materia mat = new Materia();
+        MateriaData md = new MateriaData();
+        
+        if(btn_MateriaInactiva.isSelected()){
+            md.elminarMateria(parseInt(tf_idMateria.getText()));
+            jLabelEstado.setForeground(Color.red);
+            jLabelEstado.setText("Materia Inactiva");
+        
+        }
+    }//GEN-LAST:event_btn_MateriaInactivaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnBorrar;
-    private javax.swing.JButton btnBuscarMat;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JRadioButton btnMatActiva;
-    private javax.swing.JRadioButton btnMateriaInactiva;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JTextField tfNombreMat;
-    private javax.swing.JTextField tf_anioMat;
-    private javax.swing.JTextField tf_iDMat;
+    private javax.swing.JButton btn_Actualizar;
+    private javax.swing.JButton btn_BuscarMateria;
+    private javax.swing.JButton btn_Guardar;
+    private javax.swing.JButton btn_Limpiar;
+    private javax.swing.JRadioButton btn_MateriaActiva;
+    private javax.swing.JRadioButton btn_MateriaInactiva;
+    private javax.swing.JLabel jLabelEstado;
+    private javax.swing.JLabel jl_anioMateria;
+    private javax.swing.JLabel jl_estadoMateria;
+    private javax.swing.JLabel jl_idMateria;
+    private javax.swing.JLabel jl_nombreMateria;
+    private javax.swing.JLabel jl_titulo;
+    private javax.swing.JTextField tf_anioMateria;
+    private javax.swing.JTextField tf_idMateria;
+    private javax.swing.JTextField tf_nombreMateria;
     // End of variables declaration//GEN-END:variables
 
 }
