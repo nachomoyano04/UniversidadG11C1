@@ -45,6 +45,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
         btn_Guardar = new javax.swing.JButton();
         btn_Limpiar = new javax.swing.JButton();
         btn_Actualizar = new javax.swing.JButton();
+        btn_Salir = new javax.swing.JButton();
 
         setTitle("Menu Materias");
 
@@ -67,16 +68,16 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
         jl_estadoMateria.setText("ESTADO");
 
         btn_MateriaActiva.setText("Activa");
-        btn_MateriaActiva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_MateriaActivaActionPerformed(evt);
+        btn_MateriaActiva.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                btn_MateriaActivaStateChanged(evt);
             }
         });
 
         btn_MateriaInactiva.setText("Inactiva");
-        btn_MateriaInactiva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_MateriaInactivaActionPerformed(evt);
+        btn_MateriaInactiva.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                btn_MateriaInactivaStateChanged(evt);
             }
         });
 
@@ -106,48 +107,54 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
             }
         });
 
+        btn_Salir.setText("Salir");
+        btn_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(23, 23, 23)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jl_anioMateria)
-                                        .addComponent(jl_idMateria)
-                                        .addComponent(jl_estadoMateria))
-                                    .addGap(4, 4, 4))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jl_nombreMateria)))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tf_anioMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_nombreMateria)
+                            .addComponent(jl_anioMateria)
+                            .addComponent(jl_idMateria)
+                            .addComponent(jl_estadoMateria))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_anioMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tf_idMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_BuscarMateria))
-                                .addComponent(tf_nombreMateria, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btn_MateriaActiva)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btn_MateriaInactiva))
-                                .addComponent(jLabelEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btn_Guardar)
-                            .addGap(18, 18, 18)
-                            .addComponent(btn_Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btn_Limpiar)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btn_MateriaActiva)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btn_MateriaInactiva))
+                                    .addComponent(jLabelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_BuscarMateria))
+                            .addComponent(tf_nombreMateria)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(jl_titulo)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jl_titulo)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_Guardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Limpiar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +184,8 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_Limpiar)
                             .addComponent(btn_Actualizar)
-                            .addComponent(btn_Guardar))
+                            .addComponent(btn_Guardar)
+                            .addComponent(btn_Salir))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
@@ -247,8 +255,8 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
                 
     }//GEN-LAST:event_btn_GuardarActionPerformed
 
-    private void btn_MateriaActivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MateriaActivaActionPerformed
-
+    private void btn_MateriaActivaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btn_MateriaActivaStateChanged
+        
         Materia mat = new Materia();
         MateriaData md = new MateriaData();
         
@@ -260,10 +268,10 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
             jLabelEstado.setText("Materia Activa"); 
         
         }
-    }//GEN-LAST:event_btn_MateriaActivaActionPerformed
+    }//GEN-LAST:event_btn_MateriaActivaStateChanged
 
-    private void btn_MateriaInactivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MateriaInactivaActionPerformed
-
+    private void btn_MateriaInactivaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btn_MateriaInactivaStateChanged
+        
         Materia mat = new Materia();
         MateriaData md = new MateriaData();
         
@@ -273,7 +281,11 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
             jLabelEstado.setText("Materia Inactiva");
         
         }
-    }//GEN-LAST:event_btn_MateriaInactivaActionPerformed
+    }//GEN-LAST:event_btn_MateriaInactivaStateChanged
+
+    private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btn_SalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -283,6 +295,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_Limpiar;
     private javax.swing.JRadioButton btn_MateriaActiva;
     private javax.swing.JRadioButton btn_MateriaInactiva;
+    private javax.swing.JButton btn_Salir;
     private javax.swing.JLabel jLabelEstado;
     private javax.swing.JLabel jl_anioMateria;
     private javax.swing.JLabel jl_estadoMateria;
