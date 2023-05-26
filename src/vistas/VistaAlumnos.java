@@ -293,9 +293,15 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
             btn_AlumActivo.setEnabled(true);
             btn_AlumInactivo.setEnabled(true);
             if (alum.isEstado()) {                
-                btn_AlumActivo.setSelected(true);
+                labelEstado.setOpaque(true);
+                labelEstado.setBackground(new java.awt.Color(204, 204, 0));
+                labelEstado.setForeground(new java.awt.Color(0, 0, 255));
+                labelEstado.setText("Alumno Activo");
+                //btn_AlumActivo.setSelected(true);
             } else {
-                btn_AlumActivo.setSelected(false);
+                labelEstado.setForeground(Color.red);
+                labelEstado.setText("Alumno Inactivo");
+                //btn_AlumActivo.setSelected(false);
             }
         }/* else {
             JOptionPane.showMessageDialog(null, "Alumno no encontrado");
