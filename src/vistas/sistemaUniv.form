@@ -33,21 +33,19 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Inscripciones"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jInscripcionesActionPerformed"/>
+          </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiInscribirEnMateria">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Inscribir a Materia"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiInscribirEnMateriaActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator3">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiDesinscribirDeMateria">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiInscribir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Desinscribir de Materia"/>
+                <Property name="text" type="java.lang.String" value="inscribir/desinscribir"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiInscribirActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

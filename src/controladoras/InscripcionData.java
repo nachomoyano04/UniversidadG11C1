@@ -151,8 +151,11 @@ public class InscripcionData {
             ps.setInt(1, id_alumno);
             ps.setInt(2, id_materia);
             int exito = ps.executeUpdate();
+            System.out.println(exito);
             if(exito == 1){
                 JOptionPane.showMessageDialog(null,"Inscripcion borrada con éxito");
+            }else{
+                JOptionPane.showMessageDialog(null, "La inscripcion no existe");
             }
             ps.close();
         } catch(SQLException ex){
@@ -182,10 +185,10 @@ public class InscripcionData {
         String sql = "SELECT a.nombre FROM alumno a JOIN inscribir i ON a.id_alumno = i.id_alumno JOIN materia m ON m.id_materia = i.id_materia WHERE i.id_materia = ?";
         PreparedStatement ps = null;
         try{
-            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ResultSet res = ps.getGeneratedKeys();
+            ps = con.prepareStatement(sql);
             ps.setInt(1, id_materia);
-            if(res.next()){
+            ResultSet res = ps.executeQuery();
+            while(res.next()){
                 Alumno alumno = new Alumno();
                 alumno.setId_alumno(res.getInt("id_alumno"));
                 alumno.setNombre(res.getString("nombre"));

@@ -19,10 +19,11 @@ public class sistemaUniv extends javax.swing.JFrame {
      */
     public sistemaUniv() {
         initComponents();
-        ImageIcon imagen = new ImageIcon("C:\\Users\\nacho\\OneDrive\\Documentos\\NetBeansProjects\\UniversidadG11C1\\src\\vistas\\logo-ulp.png");
+        ImageIcon imagen = new ImageIcon("src/vistas/logo-ulp.png");
         JLabel fondoLabel = new JLabel(imagen);
         fondoLabel.setBounds(0, 0, escritorio.getWidth(), escritorio.getHeight());
         escritorio.add(fondoLabel, Integer.MIN_VALUE);
+        this.setTitle("te estas portando mal, serás castigada");
     }
 
     /**
@@ -41,9 +42,8 @@ public class sistemaUniv extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmiAltaDeMaterias = new javax.swing.JMenuItem();
         jInscripciones = new javax.swing.JMenu();
-        jmiInscribirEnMateria = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jmiDesinscribirDeMateria = new javax.swing.JMenuItem();
+        jmiInscribir = new javax.swing.JMenuItem();
         jCargaNotas = new javax.swing.JMenu();
         jConsultas = new javax.swing.JMenu();
 
@@ -85,18 +85,20 @@ public class sistemaUniv extends javax.swing.JFrame {
         jMenuBar1.add(jArchivo);
 
         jInscripciones.setText("Inscripciones");
-
-        jmiInscribirEnMateria.setText("Inscribir a Materia");
-        jmiInscribirEnMateria.addActionListener(new java.awt.event.ActionListener() {
+        jInscripciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiInscribirEnMateriaActionPerformed(evt);
+                jInscripcionesActionPerformed(evt);
             }
         });
-        jInscripciones.add(jmiInscribirEnMateria);
         jInscripciones.add(jSeparator3);
 
-        jmiDesinscribirDeMateria.setText("Desinscribir de Materia");
-        jInscripciones.add(jmiDesinscribirDeMateria);
+        jmiInscribir.setText("inscribir/desinscribir");
+        jmiInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiInscribirActionPerformed(evt);
+            }
+        });
+        jInscripciones.add(jmiInscribir);
 
         jMenuBar1.add(jInscripciones);
 
@@ -122,10 +124,6 @@ public class sistemaUniv extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmiInscribirEnMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInscribirEnMateriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmiInscribirEnMateriaActionPerformed
-
     private void jmiAltaDeAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAltaDeAlumnosActionPerformed
 
         escritorio.removeAll();
@@ -147,6 +145,20 @@ public class sistemaUniv extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmiAltaDeMateriasActionPerformed
 
+    private void jInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInscripcionesActionPerformed
+        // TODO add your handling code here
+    }//GEN-LAST:event_jInscripcionesActionPerformed
+
+    private void jmiInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInscribirActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaInscripciones vistaInsc = new VistaInscripciones();
+        vistaInsc.setVisible(true);
+        escritorio.add(vistaInsc);
+        escritorio.moveToFront(vistaInsc);
+    }//GEN-LAST:event_jmiInscribirActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -193,7 +205,6 @@ public class sistemaUniv extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JMenuItem jmiAltaDeAlumnos;
     private javax.swing.JMenuItem jmiAltaDeMaterias;
-    private javax.swing.JMenuItem jmiDesinscribirDeMateria;
-    private javax.swing.JMenuItem jmiInscribirEnMateria;
+    private javax.swing.JMenuItem jmiInscribir;
     // End of variables declaration//GEN-END:variables
 }
