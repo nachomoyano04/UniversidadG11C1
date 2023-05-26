@@ -47,7 +47,8 @@ public class MateriaData {
     
     public Materia buscarMateria(int id){
         Materia materia = null;
-        String sql = "SELECT nombre, año FROM materia WHERE estado=1 AND id_materia = ?";
+        //String sql = "SELECT nombre, año FROM materia WHERE estado=1 AND id_materia = ?";
+        String sql = "SELECT nombre, año, estado FROM materia WHERE id_materia = ?";
         PreparedStatement ps = null;
         try{
             ps = con.prepareStatement(sql);
@@ -58,7 +59,8 @@ public class MateriaData {
                 materia.setId_materia(id);
                 materia.setNombre(res.getString("nombre"));
                 materia.setAnio(res.getInt("año"));
-                materia.setEstado(true);
+               // materia.setEstado(true);
+                materia.setEstado(res.getBoolean("estado"));
             }
             ps.close();
         } catch(SQLException ex) {

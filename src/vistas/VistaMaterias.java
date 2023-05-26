@@ -9,6 +9,7 @@ import controladoras.MateriaData;
 import entidades.Materia;
 import java.awt.Color;
 import static java.lang.Integer.parseInt;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -217,6 +218,9 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
                 jLabelEstado.setForeground(Color.red);
                 jLabelEstado.setText("Materia Inactiva");
             }        
+        } else{
+            JOptionPane.showMessageDialog(null, "Materia no encontrada");
+            limpiar();
         }        
     }//GEN-LAST:event_btn_BuscarMateriaActionPerformed
 
@@ -286,7 +290,13 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
         dispose();
     }//GEN-LAST:event_btn_SalirActionPerformed
-
+    private void limpiar(){
+        tf_anioMateria.setText("");
+        tf_idMateria.setText("");
+        tf_nombreMateria.setText("");
+        jLabelEstado.setText("");
+        jLabelEstado.setOpaque(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Actualizar;
