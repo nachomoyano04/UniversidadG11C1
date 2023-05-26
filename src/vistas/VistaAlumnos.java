@@ -42,7 +42,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         tf_NombreAlum = new javax.swing.JTextField();
         btnBuscarPorID = new javax.swing.JButton();
         btnGuardarAlumno = new javax.swing.JButton();
-        tbnBorrarAlumno = new javax.swing.JButton();
         btnActualizarAlumno = new javax.swing.JButton();
         btnLimpiarAlumno = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -85,13 +84,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         btnGuardarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarAlumnoActionPerformed(evt);
-            }
-        });
-
-        tbnBorrarAlumno.setText("Borrar");
-        tbnBorrarAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbnBorrarAlumnoActionPerformed(evt);
             }
         });
 
@@ -157,15 +149,9 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGuardarAlumno)
-                        .addGap(18, 18, 18)
-                        .addComponent(tbnBorrarAlumno)
-                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
@@ -189,7 +175,11 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(90, 90, 90)))))
+                                .addGap(90, 90, 90))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuardarAlumno)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnActualizarAlumno)
@@ -243,7 +233,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarAlumno)
-                    .addComponent(tbnBorrarAlumno)
                     .addComponent(btnActualizarAlumno)
                     .addComponent(btnLimpiarAlumno))
                 .addGap(31, 31, 31))
@@ -279,7 +268,7 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                 labelEstado.setForeground(new java.awt.Color(0, 0, 255));
                 labelEstado.setText("Alumno Activo");
                 //btn_AlumActivo.setSelected(true);
-            }else{
+            }else{      
                 labelEstado.setForeground(Color.red);
                 labelEstado.setText("Alumno Inactivo");
                 //btn_AlumActivo.setSelected(false);
@@ -342,16 +331,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         ad.guardarAlumno(alum);
     }//GEN-LAST:event_btnGuardarAlumnoActionPerformed
 
-    private void tbnBorrarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnBorrarAlumnoActionPerformed
-        // TODO add your handling code here:
-        Alumno alum= new Alumno();
-        AlumnoData ad = new AlumnoData();
-        
-        if (!tf_idAlumno.getText().equals("")){
-            ad.eliminarAlumno(parseInt(tf_idAlumno.getText()));
-        }     
-    }//GEN-LAST:event_tbnBorrarAlumnoActionPerformed
-
     private void btnActualizarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAlumnoActionPerformed
         // TODO add your handling code here:
         Alumno alum = new Alumno();
@@ -362,12 +341,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
              alum.setNombre(tf_NombreAlum.getText());
              alum.setDni(parseInt(tf_dniAlumno.getText()));
              alum.setFechaNacimiento(LocalDate.parse(tf_FechaNacim.getText(),DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-             /*if (btn_AlumActivo.isSelected()) {
-                 alum.setEstado(true);
-             }
-             if (btn_AlumInactivo.isSelected()) {;
-                 alum.setEstado(false);
-             }*/
              ad.modificarAlumno(alum);
          }
          
@@ -375,17 +348,26 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
 
     private void btn_AlumActivoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btn_AlumActivoStateChanged
         // TODO add your handling code here:
-        Alumno alum=new Alumno();
+        AlumnoData ad=new AlumnoData();
+        Alumno al=new Alumno();
         if (btn_AlumActivo.isSelected()) {
-            alum.setId_alumno(parseInt(tf_idAlumno.getText()));
-            btn_AlumInactivo.setSelected(false);
-            
+            ad.activarAlumno(parseInt(tf_idAlumno.getText())); 
+            labelEstado.setOpaque(true);
+                labelEstado.setBackground(new java.awt.Color(204, 204, 0));
+                labelEstado.setForeground(new java.awt.Color(0, 0, 255));
+                labelEstado.setText("Alumno Activo");
         }
     }//GEN-LAST:event_btn_AlumActivoStateChanged
 
     private void btn_AlumInactivoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btn_AlumInactivoStateChanged
         // TODO add your handling code here:
-        if(btn_AlumInactivo.isSelected()) btn_AlumActivo.setSelected(false);
+        AlumnoData ad=new AlumnoData();
+        Alumno al=new Alumno();
+        if(btn_AlumInactivo.isSelected()) {
+            ad.eliminarAlumno(parseInt(tf_idAlumno.getText()));
+            labelEstado.setForeground(Color.red);
+            labelEstado.setText("Alumno Inactivo");
+        }         
     }//GEN-LAST:event_btn_AlumInactivoStateChanged
     
 
@@ -405,7 +387,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel labelEstado;
-    private javax.swing.JButton tbnBorrarAlumno;
     private javax.swing.JTextField tf_ApellidoAlum;
     private javax.swing.JTextField tf_FechaNacim;
     private javax.swing.JTextField tf_NombreAlum;

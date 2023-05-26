@@ -42,8 +42,8 @@ public class AlumnoData {
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno"+ex.getMessage());
         }
-
     }
+    
     public Alumno buscarAlumnoPorId(int id) {
         Alumno alumno = null;
         String sql = "SELECT  dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE id_alumno=?";// AND estado = 1";
@@ -151,8 +151,7 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno "+ex.getMessage());
         }
     }
-
-    
+   
     public void eliminarAlumno(int id) {
 
         try {
