@@ -18,23 +18,24 @@ import java.util.HashMap;
  */
 public class VistaInscripciones extends javax.swing.JInternalFrame {
 
-        private MateriaData md = new MateriaData();
-        private AlumnoData ad = new AlumnoData();
-        private InscripcionData inData = new InscripcionData();
-        private HashMap<String,Integer> alumnos = new HashMap();
-        private HashMap<String,Integer> materias = new HashMap();
+    private MateriaData md = new MateriaData();
+    private AlumnoData ad = new AlumnoData();
+    private InscripcionData inData = new InscripcionData();
+    private HashMap<String, Integer> alumnos = new HashMap();
+    private HashMap<String, Integer> materias = new HashMap();
+
     /**
      * Creates new form VistaInscripciones
      */
     public VistaInscripciones() {
         initComponents();
         for (Alumno listarAlumno : ad.listarAlumnos()) {
-            alumnos.put(listarAlumno.getNombre(), listarAlumno.getId_alumno());
-            jComboIncripAlum.addItem(listarAlumno.getNombre());
+            alumnos.put(listarAlumno.getNombre() + " " + listarAlumno.getApellido(), listarAlumno.getId_alumno());
+            jComboIncripAlum.addItem(listarAlumno.getNombre() + " " + listarAlumno.getApellido());
         }
         for (Materia listarMateria : md.listarMaterias()) {
             materias.put(listarMateria.getNombre(), listarMateria.getId_materia());
-            jComboIncripMateria.addItem(listarMateria.toString());
+            jComboIncripMateria.addItem(listarMateria.getNombre());
         }
     }
 
@@ -54,8 +55,6 @@ public class VistaInscripciones extends javax.swing.JInternalFrame {
         jComboIncripMateria = new javax.swing.JComboBox<>();
         jbInscribir = new javax.swing.JButton();
         jbDesinscribir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jtInscripcionNota = new javax.swing.JTextField();
 
         jLabel1.setText("FORMULARIO DE INSCRIPCION");
 
@@ -71,8 +70,11 @@ public class VistaInscripciones extends javax.swing.JInternalFrame {
         });
 
         jbDesinscribir.setText("Desinscribir");
-
-        jLabel2.setText("NOTA");
+        jbDesinscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDesinscribirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,17 +93,13 @@ public class VistaInscripciones extends javax.swing.JInternalFrame {
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAlumno)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel2)))
+                            .addComponent(jLabel3))
                         .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jComboIncripMateria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jComboIncripAlum, 0, 171, Short.MAX_VALUE))
-                            .addComponent(jbInscribir)
-                            .addComponent(jtInscripcionNota, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jbInscribir))))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -116,11 +114,7 @@ public class VistaInscripciones extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboIncripMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtInscripcionNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbInscribir)
                     .addComponent(jbDesinscribir))
@@ -131,27 +125,30 @@ public class VistaInscripciones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
-        Alumno al = new Alumno(); //creamos el alumno para inscribir
-        Materia ma = new Materia(); //creamos la materia para inscribir
+        Alumno al; //creamos el alumno para inscribir
+        Materia ma; //creamos la materia para inscribir
         String nombreAlumno = jComboIncripAlum.getSelectedItem().toString();
         String nombreMateria = jComboIncripMateria.getSelectedItem().toString();
         al = ad.buscarAlumnoPorId(alumnos.get(nombreAlumno));
         ma = md.buscarMateria(materias.get(nombreMateria));
-        double nota =  Double.parseDouble(jtInscripcionNota.getText());
-        Inscripcion inscripcion = new Inscripcion();
+        Inscripcion inscripcion = new Inscripcion(al, ma, 0);
         inData.inscribir(inscripcion);
     }//GEN-LAST:event_jbInscribirActionPerformed
+
+    private void jbDesinscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDesinscribirActionPerformed
+        String nombreAlumno = jComboIncripAlum.getSelectedItem().toString();
+        String nombreMateria = jComboIncripMateria.getSelectedItem().toString();
+        inData.borrarInscripcionMateriaAlumno(alumnos.get(nombreAlumno), materias.get(nombreMateria));
+    }//GEN-LAST:event_jbDesinscribirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboIncripAlum;
     private javax.swing.JComboBox<String> jComboIncripMateria;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbDesinscribir;
     private javax.swing.JButton jbInscribir;
-    private javax.swing.JTextField jtInscripcionNota;
     private javax.swing.JLabel lblAlumno;
     // End of variables declaration//GEN-END:variables
 }

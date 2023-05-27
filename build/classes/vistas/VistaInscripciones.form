@@ -36,10 +36,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblAlumno" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -48,7 +44,6 @@
                               <Component id="jComboIncripAlum" pref="171" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jbInscribir" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtInscripcionNota" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -70,12 +65,7 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboIncripMateria" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtInscripcionNota" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbInscribir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbDesinscribir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -133,13 +123,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Desinscribir"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="NOTA"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jtInscripcionNota">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbDesinscribirActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

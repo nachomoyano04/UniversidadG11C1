@@ -170,15 +170,18 @@ public class AlumnoData {
     public void activarAlumno(int id) {
 
         try {
-            String sql = "UPDATE alumno SET estado = 1 WHERE id_alumno = ? ";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            int fila=ps.executeUpdate();
-            ps.close();
-            if(fila==1){
-                JOptionPane.showMessageDialog(null, " Se activo el alumno.");
+            if(!this.buscarAlumnoPorId(id).isEstado()){
+                String sql = "UPDATE alumno SET estado = 1 WHERE id_alumno = ? ";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setInt(1, id);
+                int fila=ps.executeUpdate();
+                if(fila==1){
+                    JOptionPane.showMessageDialog(null, " Se activo el alumno.");
+                }
+                ps.close();
+            } else{
+                JOptionPane.showMessageDialog(null, "Alumno ya activo");
             }
-
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno");

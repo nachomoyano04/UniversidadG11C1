@@ -23,7 +23,7 @@ public class sistemaUniv extends javax.swing.JFrame {
         JLabel fondoLabel = new JLabel(imagen);
         fondoLabel.setBounds(0, 0, escritorio.getWidth(), escritorio.getHeight());
         escritorio.add(fondoLabel, Integer.MIN_VALUE);
-        this.setTitle("te estas portando mal, serás castigada");
+        this.setTitle("Universidad de La Punta");
     }
 
     /**
@@ -163,7 +163,7 @@ public class sistemaUniv extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        VistaInscripciones vistaInsc = new VistaInscripciones();
+        VistaInscripcionesVol3 vistaInsc = new VistaInscripcionesVol3();
         vistaInsc.setVisible(true);
         escritorio.add(vistaInsc);
         escritorio.moveToFront(vistaInsc);
