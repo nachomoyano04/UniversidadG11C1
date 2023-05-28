@@ -21,7 +21,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Marcel
  */
 public class VistaMatXAlumno extends javax.swing.JInternalFrame {
-    DefaultTableModel modelo;
+    DefaultTableModel modelo = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+    };
 
     /**
      * Creates new form VistaAlumMat
@@ -77,16 +82,27 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
 
         tablaMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Materia", "Nombre", "Nota"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaMaterias.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaMaterias);
+        if (tablaMaterias.getColumnModel().getColumnCount() > 0) {
+            tablaMaterias.getColumnModel().getColumn(0).setResizable(false);
+            tablaMaterias.getColumnModel().getColumn(1).setResizable(false);
+            tablaMaterias.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         jLabel3.setText("DNI");
 
@@ -99,8 +115,11 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Nombre y Apellido");
 
+        tf_ApellidoNombre.setEditable(false);
+
         jLabel5.setText("Estado ");
 
+        tf_Estado.setEditable(false);
         tf_Estado.setText("    ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,7 +265,7 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
-    
+
     private void cargarTabla(){
         //AlumnoData ad=new AlumnoData();
         //MateriaData md=new MateriaData();
@@ -257,7 +276,6 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
             
             modelo.addRow(new Object []{insc.getMateria().getId_materia(),insc.getMateria().getNombre(),insc.getNota()});
         }
-        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

@@ -51,18 +51,16 @@
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jtfDNI" min="-2" pref="90" max="-2" attributes="0"/>
-                                          <EmptySpace pref="85" max="32767" attributes="0"/>
-                                          <Component id="jbBuscarAlumnoPorDNI" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jtfNombre" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtfApellido" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtfFecha" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jtfDNI" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                                      <Component id="jbBuscarAlumnoPorDNI" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="labelEstado" alignment="1" min="-2" pref="226" max="-2" attributes="0"/>
+                                  <Component id="jtfNombre" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtfApellido" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtfFecha" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtfEstado" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -140,7 +138,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -389,13 +387,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_salirActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelEstado">
+    <Component class="javax.swing.JTextField" name="jtfEstado">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Bahnschrift" size="14" style="0"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="-------------------"/>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
   </SubComponents>

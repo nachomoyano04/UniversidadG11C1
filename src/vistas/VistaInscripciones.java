@@ -59,7 +59,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jbLimpiar = new javax.swing.JButton();
         btn_salir = new javax.swing.JButton();
-        labelEstado = new javax.swing.JLabel();
+        jtfEstado = new javax.swing.JTextField();
 
         jButton1.setText("Activar");
 
@@ -195,9 +195,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
             }
         });
 
-        labelEstado.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        labelEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelEstado.setText("-------------------");
+        jtfEstado.setEditable(false);
+        jtfEstado.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,16 +218,15 @@ public class VistaInscripciones extends javax.swing.JFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))
                                 .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                                            .addComponent(jbBuscarAlumnoPorDNI))
-                                        .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtfApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtfFecha, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(labelEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                                        .addComponent(jbBuscarAlumnoPorDNI))
+                                    .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfFecha, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jbActivarAlumno)
                                 .addGap(18, 18, 18)
@@ -287,7 +285,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(labelEstado))
+                            .addComponent(jtfEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jbLimpiar)
@@ -313,18 +311,20 @@ public class VistaInscripciones extends javax.swing.JFrame {
             jbBuscarAlumnoPorDNI.setEnabled(false);
             //PARTE DE BUSQUEDA ALUMNO
             String dni = jtfDNI.getText();
+            try{
             al = ad.buscarAlumnoPorDni(Integer.parseInt(dni));
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(this, "Debe ingresar un número");
+            }
             jtfNombre.setText(al.getNombre());jtfNombre.setEditable(false);
             jtfApellido.setText(al.getApellido());
             jtfFecha.setText(al.getFechaNacimiento().toString());
             if(al.isEstado()){
-                labelEstado.setOpaque(true);
-                labelEstado.setBackground(new java.awt.Color(204, 204, 0));
-                labelEstado.setForeground(new java.awt.Color(0, 0, 255));
-                labelEstado.setText("Alumno Activo");
+                jtfEstado.setForeground(Color.GREEN);
+                jtfEstado.setText("Alumno Activo");
             }else{
-                labelEstado.setForeground(Color.red);
-                labelEstado.setText("Alumno Inactivo");
+                jtfEstado.setForeground(Color.red);
+                jtfEstado.setText("Alumno Inactivo");
             }
             //PARTE DE BUSQUEDA MATERIA
             tablaMateriasCursadas = (DefaultTableModel) jtableMaterias.getModel();
@@ -345,10 +345,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private void jbActivarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActivarAlumnoActionPerformed
         // TODO add your handling code here:
         ad.activarAlumno(al.getId_alumno());
-        labelEstado.setOpaque(true);
-        labelEstado.setBackground(new java.awt.Color(204, 204, 0));
-        labelEstado.setForeground(new java.awt.Color(0, 0, 255));
-        labelEstado.setText("Alumno Activo");
+        jtfEstado.setForeground(Color.GREEN);
+        jtfEstado.setText("Alumno Activo");
     }//GEN-LAST:event_jbActivarAlumnoActionPerformed
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
@@ -371,6 +369,7 @@ public class VistaInscripciones extends javax.swing.JFrame {
         jtfNombre.setText("");
         jtfApellido.setText("");
         jtfFecha.setText("");
+        jtfEstado.setText("");
         jbBuscarAlumnoPorDNI.setEnabled(true);
         jbActivarAlumno.setEnabled(false);
         jbInscribir.setEnabled(false);
@@ -400,38 +399,38 @@ public class VistaInscripciones extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaInscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaInscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaInscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaInscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaInscripciones().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(VistaInscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(VistaInscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(VistaInscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(VistaInscripciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new VistaInscripciones().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_salir;
@@ -455,8 +454,8 @@ public class VistaInscripciones extends javax.swing.JFrame {
     private javax.swing.JTable jtableMateriasNOCursadas;
     private javax.swing.JTextField jtfApellido;
     private javax.swing.JTextField jtfDNI;
+    private javax.swing.JTextField jtfEstado;
     private javax.swing.JTextField jtfFecha;
     private javax.swing.JTextField jtfNombre;
-    private javax.swing.JLabel labelEstado;
     // End of variables declaration//GEN-END:variables
 }
