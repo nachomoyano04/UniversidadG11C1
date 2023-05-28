@@ -57,11 +57,11 @@ public class sistemaUniv extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 765, Short.MAX_VALUE)
+            .addGap(0, 1097, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 814, Short.MAX_VALUE)
         );
 
         jArchivo.setText("Archivo");
@@ -163,7 +163,7 @@ public class sistemaUniv extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        VistaInscripcionesVol3 vistaInsc = new VistaInscripcionesVol3();
+        VistaInscripciones vistaInsc = new VistaInscripciones();
         vistaInsc.setVisible(true);
         escritorio.add(vistaInsc);
         escritorio.moveToFront(vistaInsc);
