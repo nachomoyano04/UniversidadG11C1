@@ -74,7 +74,6 @@ public class UniversidadG11C1 {
 //        Inscripcion inscripcion = new Inscripcion(alumno, materia, 0);
 //        InscripcionData id = new InscripcionData();
 //        id.inscribir(inscripcion);
-//        id.inscribir(inscripcion);
 //        id.borrarInscripcionMateriaAlumno(1, 2);
 //        id.actualizarNota(2, 1, 5);
 //            for (Alumno alumno1 : id.obtenerAlumnosXMateria(2)) {
