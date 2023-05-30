@@ -51,16 +51,23 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jCargaNotas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Carga de Notas"/>
+            <Property name="text" type="java.lang.String" value="Notas"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCargaNotasActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JMenu()"/>
             <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="jCargaNotas.add(jCargaNotas);"/>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="sistemaUniv_jCargaNotas"/>
           </AuxValues>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiCargaDeNotas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Carga de Notas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiCargaDeNotasActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jConsultas">
           <Properties>

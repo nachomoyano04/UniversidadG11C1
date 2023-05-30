@@ -43,9 +43,9 @@ public class sistemaUniv extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jmiInscribir = new javax.swing.JMenuItem();
         jCargaNotas = new javax.swing.JMenu();
+        jmiCargaDeNotas = new javax.swing.JMenuItem();
         jConsultas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,12 +102,15 @@ public class sistemaUniv extends javax.swing.JFrame {
 
         jMenuBar1.add(jInscripciones);
 
-        jCargaNotas.setText("Carga de Notas");
-        jCargaNotas.addActionListener(new java.awt.event.ActionListener() {
+        jCargaNotas.setText("Notas");
+
+        jmiCargaDeNotas.setText("Carga de Notas");
+        jmiCargaDeNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCargaNotasActionPerformed(evt);
+                jmiCargaDeNotasActionPerformed(evt);
             }
         });
+        jCargaNotas.add(jmiCargaDeNotas);
 
         jCargaNotas.add(jCargaNotas);
 
@@ -122,14 +125,6 @@ public class sistemaUniv extends javax.swing.JFrame {
             }
         });
         jConsultas.add(jMenuItem1);
-
-        jMenuItem2.setText("Alumnos por materia");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jConsultas.add(jMenuItem2);
 
         jMenuBar1.add(jConsultas);
 
@@ -193,15 +188,6 @@ public class sistemaUniv extends javax.swing.JFrame {
         escritorio.moveToFront(vistaMatXAlumno);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jCargaNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCargaNotasActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        VistaCargaNotas vistaCargaNotas = new VistaCargaNotas();
-        vistaCargaNotas.setVisible(true);
-        escritorio.add(vistaCargaNotas);
-        escritorio.moveToFront(vistaCargaNotas);
-    }//GEN-LAST:event_jCargaNotasActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
@@ -211,6 +197,15 @@ public class sistemaUniv extends javax.swing.JFrame {
         escritorio.add(vistaAlumnoXMat);
         escritorio.moveToFront(vistaAlumnoXMat);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jmiCargaDeNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCargaDeNotasActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaCargaNotas vistaCargaNotas = new VistaCargaNotas();
+        vistaCargaNotas.setVisible(true);
+        escritorio.add(vistaCargaNotas);
+        escritorio.moveToFront(vistaCargaNotas);
+    }//GEN-LAST:event_jmiCargaDeNotasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,11 +250,11 @@ public class sistemaUniv extends javax.swing.JFrame {
     private javax.swing.JMenu jInscripciones;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JMenuItem jmiAltaDeAlumnos;
     private javax.swing.JMenuItem jmiAltaDeMaterias;
+    private javax.swing.JMenuItem jmiCargaDeNotas;
     private javax.swing.JMenuItem jmiInscribir;
     // End of variables declaration//GEN-END:variables
 }
