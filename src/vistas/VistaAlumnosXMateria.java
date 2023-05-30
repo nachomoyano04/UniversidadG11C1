@@ -20,13 +20,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Marcel
  */
-public class VistaMatXAlumno extends javax.swing.JInternalFrame {
+public class VistaAlumnosXMateria extends javax.swing.JInternalFrame {
     DefaultTableModel modelo;
 
     /**
      * Creates new form VistaAlumMat
      */
-    public VistaMatXAlumno() {
+    public VistaAlumnosXMateria() {
         modelo=new DefaultTableModel();
         initComponents();
         armarTabla();
@@ -47,17 +47,17 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
         btnSalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMaterias = new javax.swing.JTable();
-        tfBuscarDni = new javax.swing.JTextField();
+        tfBuscarIDMat = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        btnbuscarDni = new javax.swing.JButton();
+        btnbuscarIdMat = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        tf_ApellidoNombre = new javax.swing.JTextField();
+        tf_NomMat = new javax.swing.JTextField();
         labelEstado = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
-        jLabel1.setText("MATERIAS POR ALUMNO");
+        jLabel1.setText("ALUMNOS POR MATERIA");
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -88,16 +88,16 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
         tablaMaterias.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaMaterias);
 
-        jLabel3.setText("DNI");
+        jLabel3.setText("ID Materia");
 
-        btnbuscarDni.setText("Buscar");
-        btnbuscarDni.addActionListener(new java.awt.event.ActionListener() {
+        btnbuscarIdMat.setText("Buscar");
+        btnbuscarIdMat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbuscarDniActionPerformed(evt);
+                btnbuscarIdMatActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Apellido y nombre");
+        jLabel5.setText("Nombre Materia");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,12 +116,12 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_ApellidoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_NomMat, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfBuscarDni, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfBuscarIDMat, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnbuscarDni)))
-                        .addGap(0, 24, Short.MAX_VALUE)))
+                                .addComponent(btnbuscarIdMat)))
+                        .addGap(0, 34, Short.MAX_VALUE)))
                 .addGap(298, 298, 298))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,13 +142,13 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfBuscarDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfBuscarIDMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(btnbuscarDni))
+                    .addComponent(btnbuscarIdMat))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelEstado)
-                    .addComponent(tf_ApellidoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_NomMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,37 +164,41 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnbuscarDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarDniActionPerformed
+    private void btnbuscarIdMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarIdMatActionPerformed
         // TODO add your handling code here:
         Alumno alum = new Alumno();
-        AlumnoData ad = new AlumnoData();
+        MateriaData md = new MateriaData();
         InscripcionData listaIncrip=new InscripcionData();
+        ArrayList<Alumno> listaAlumnos=new ArrayList();
+        Materia materia=new Materia();
 
-        alum = ad.buscarAlumnoPorDni(parseInt(tfBuscarDni.getText()));
-        if (alum != null) {
+        materia = md.buscarMateria(parseInt(tfBuscarIDMat.getText()));
+        if (materia != null) {
             borrarFilas();
-            tf_ApellidoNombre.setText(alum.getApellido()+", "+alum.getNombre());
-            if (alum.isEstado()) {                
+            tf_NomMat.setText(materia.getNombre()+" - "+materia.getAnio());
+            if (materia.isEstado()) {                
                 labelEstado.setOpaque(true);
                 labelEstado.setBackground(new java.awt.Color(204, 204, 0));
                 labelEstado.setForeground(new java.awt.Color(0, 0, 255));
-                labelEstado.setText("Alumno Activo");
+                labelEstado.setText("Materia Activa");
             } else {
                 labelEstado.setForeground(Color.red);
-                labelEstado.setText("Alumno Inactivo");
+                labelEstado.setText("Materia Inactiva");
             }            
         borrarFilas();
-        for( Inscripcion insc:listaIncrip.obtenerInscripcionesporAlumno(alum.getId_alumno())){  
-            modelo.addRow(new Object []{insc.getMateria().getId_materia(),insc.getMateria().getNombre(),insc.getNota()});
+        for( Alumno list: listaIncrip.obtenerAlumnosXMateria(materia.getId_materia())){  
+            modelo.addRow(new Object []{list.getId_alumno(), list.getApellido(), list.getNombre()});
         }
         }       
-    }//GEN-LAST:event_btnbuscarDniActionPerformed
+    }//GEN-LAST:event_btnbuscarIdMatActionPerformed
 
+
+    
     private void armarTabla(){
         ArrayList<Object> columnas = new ArrayList<Object>();
-        columnas.add("ID materia");
+        columnas.add("ID alumno");
         columnas.add("Nombre");
-        columnas.add("Nota");
+        columnas.add("Apellido");
         for(Object it:columnas){
             modelo.addColumn(it);
         }
@@ -213,7 +217,7 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnbuscarDni;
+    private javax.swing.JButton btnbuscarIdMat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -221,7 +225,7 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelEstado;
     private javax.swing.JTable tablaMaterias;
-    private javax.swing.JTextField tfBuscarDni;
-    private javax.swing.JTextField tf_ApellidoNombre;
+    private javax.swing.JTextField tfBuscarIDMat;
+    private javax.swing.JTextField tf_NomMat;
     // End of variables declaration//GEN-END:variables
 }

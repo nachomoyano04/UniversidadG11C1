@@ -41,14 +41,14 @@
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="tf_ApellidoNombre" min="-2" pref="226" max="-2" attributes="0"/>
+                          <Component id="tf_NomMat" min="-2" pref="226" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="tfBuscarDni" min="-2" pref="118" max="-2" attributes="0"/>
+                              <Component id="tfBuscarIDMat" min="-2" pref="118" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnbuscarDni" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnbuscarIdMat" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="34" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
@@ -78,14 +78,14 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="30" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tfBuscarDni" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfBuscarIDMat" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnbuscarDni" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnbuscarIdMat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_ApellidoNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tf_NomMat" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -103,7 +103,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Consolas" size="36" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="MATERIAS POR ALUMNO"/>
+        <Property name="text" type="java.lang.String" value="ALUMNOS POR MATERIA"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSalir">
@@ -156,27 +156,27 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="tfBuscarDni">
+    <Component class="javax.swing.JTextField" name="tfBuscarIDMat">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="DNI"/>
+        <Property name="text" type="java.lang.String" value="ID Materia"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnbuscarDni">
+    <Component class="javax.swing.JButton" name="btnbuscarIdMat">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbuscarDniActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbuscarIdMatActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Apellido y nombre"/>
+        <Property name="text" type="java.lang.String" value="Nombre Materia"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_ApellidoNombre">
+    <Component class="javax.swing.JTextField" name="tf_NomMat">
     </Component>
     <Component class="javax.swing.JLabel" name="labelEstado">
     </Component>
