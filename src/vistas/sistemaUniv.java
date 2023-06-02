@@ -45,7 +45,10 @@ public class sistemaUniv extends javax.swing.JFrame {
         jCargaNotas = new javax.swing.JMenu();
         jmiCargaDeNotas = new javax.swing.JMenuItem();
         jConsultas = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuMatXAlumno = new javax.swing.JMenuItem();
+        jMenuAlumXMat = new javax.swing.JMenuItem();
+        jMenuSalir = new javax.swing.JMenu();
+        jMenuItemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +63,7 @@ public class sistemaUniv extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 814, Short.MAX_VALUE)
+            .addGap(0, 816, Short.MAX_VALUE)
         );
 
         jArchivo.setText("Archivo");
@@ -118,15 +121,40 @@ public class sistemaUniv extends javax.swing.JFrame {
 
         jConsultas.setText("Consultas");
 
-        jMenuItem1.setText("Materias de un alumno");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuMatXAlumno.setText("Materias de un alumno");
+        jMenuMatXAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuMatXAlumnoActionPerformed(evt);
             }
         });
-        jConsultas.add(jMenuItem1);
+        jConsultas.add(jMenuMatXAlumno);
+
+        jMenuAlumXMat.setText("Alumnos por materia");
+        jMenuAlumXMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAlumXMatActionPerformed(evt);
+            }
+        });
+        jConsultas.add(jMenuAlumXMat);
 
         jMenuBar1.add(jConsultas);
+
+        jMenuSalir.setText("Salir");
+        jMenuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSalirActionPerformed(evt);
+            }
+        });
+
+        jMenuItemSalir.setText("Salir");
+        jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalirActionPerformed(evt);
+            }
+        });
+        jMenuSalir.add(jMenuItemSalir);
+
+        jMenuBar1.add(jMenuSalir);
 
         setJMenuBar(jMenuBar1);
 
@@ -179,16 +207,16 @@ public class sistemaUniv extends javax.swing.JFrame {
         escritorio.moveToFront(vistaInsc);
     }//GEN-LAST:event_jmiInscribirActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuMatXAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMatXAlumnoActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         VistaMatXAlumno vistaMatXAlumno = new VistaMatXAlumno();
         vistaMatXAlumno.setVisible(true);
         escritorio.add(vistaMatXAlumno);
         escritorio.moveToFront(vistaMatXAlumno);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuMatXAlumnoActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuAlumXMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlumXMatActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
@@ -196,7 +224,7 @@ public class sistemaUniv extends javax.swing.JFrame {
         vistaAlumnoXMat.setVisible(true);
         escritorio.add(vistaAlumnoXMat);
         escritorio.moveToFront(vistaAlumnoXMat);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuAlumXMatActionPerformed
 
     private void jmiCargaDeNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCargaDeNotasActionPerformed
         escritorio.removeAll();
@@ -206,6 +234,17 @@ public class sistemaUniv extends javax.swing.JFrame {
         escritorio.add(vistaCargaNotas);
         escritorio.moveToFront(vistaCargaNotas);
     }//GEN-LAST:event_jmiCargaDeNotasActionPerformed
+
+    private void jMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalirActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jMenuSalirActionPerformed
+
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,8 +287,11 @@ public class sistemaUniv extends javax.swing.JFrame {
     private javax.swing.JMenu jCargaNotas;
     private javax.swing.JMenu jConsultas;
     private javax.swing.JMenu jInscripciones;
+    private javax.swing.JMenuItem jMenuAlumXMat;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemSalir;
+    private javax.swing.JMenuItem jMenuMatXAlumno;
+    private javax.swing.JMenu jMenuSalir;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JMenuItem jmiAltaDeAlumnos;

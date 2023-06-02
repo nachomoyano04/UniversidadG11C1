@@ -170,6 +170,7 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
         AlumnoData ad = new AlumnoData();
         InscripcionData listaIncrip=new InscripcionData();
 
+        borrarFilas();
         alum = ad.buscarAlumnoPorDni(parseInt(tfBuscarDni.getText()));
         if (alum != null) {
             borrarFilas();
@@ -183,7 +184,6 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
                 labelEstado.setForeground(Color.red);
                 labelEstado.setText("Alumno Inactivo");
             }            
-        borrarFilas();
         for( Inscripcion insc:listaIncrip.obtenerInscripcionesporAlumno(alum.getId_alumno())){  
             modelo.addRow(new Object []{insc.getMateria().getId_materia(),insc.getMateria().getNombre(),insc.getNota()});
         }
@@ -203,7 +203,7 @@ public class VistaMatXAlumno extends javax.swing.JInternalFrame {
     
     private void borrarFilas(){
         int a=modelo.getRowCount()-1;
-        for(int i=a;i>0;i--){
+        for(int i=a;i>=0;i--){
             modelo.removeRow(i);
         }
     }

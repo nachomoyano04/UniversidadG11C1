@@ -173,8 +173,8 @@ public class VistaAlumnosXMateria extends javax.swing.JInternalFrame {
         Materia materia=new Materia();
 
         materia = md.buscarMateria(parseInt(tfBuscarIDMat.getText()));
+        borrarFilas();
         if (materia != null) {
-            borrarFilas();
             tf_NomMat.setText(materia.getNombre()+" - "+materia.getAnio());
             if (materia.isEstado()) {                
                 labelEstado.setOpaque(true);
@@ -185,7 +185,6 @@ public class VistaAlumnosXMateria extends javax.swing.JInternalFrame {
                 labelEstado.setForeground(Color.red);
                 labelEstado.setText("Materia Inactiva");
             }            
-        borrarFilas();
         for( Alumno list: listaIncrip.obtenerAlumnosXMateria(materia.getId_materia())){  
             modelo.addRow(new Object []{list.getId_alumno(), list.getApellido(), list.getNombre()});
         }
@@ -207,7 +206,7 @@ public class VistaAlumnosXMateria extends javax.swing.JInternalFrame {
     
     private void borrarFilas(){
         int a=modelo.getRowCount()-1;
-        for(int i=a;i>0;i--){
+        for(int i=a;i>=0;i--){
             modelo.removeRow(i);
         }
     }
