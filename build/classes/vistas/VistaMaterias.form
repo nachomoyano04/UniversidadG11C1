@@ -35,15 +35,15 @@
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="tf_anioMateria" min="-2" pref="81" max="-2" attributes="0"/>
                                   <Component id="tf_idMateria" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="btn_MateriaActiva" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                       <Component id="btn_MateriaInactiva" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabelEstado" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
+                                  <Component id="jLabelEstado" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btn_BuscarMateria" min="-2" max="-2" attributes="0"/>
@@ -82,20 +82,25 @@
                   <Component id="tf_idMateria" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_BuscarMateria" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jl_nombreMateria" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_nombreMateria" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jl_nombreMateria" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="tf_nombreMateria" min="-2" pref="24" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jl_anioMateria" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tf_anioMateria" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jl_estadoMateria" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jl_estadoMateria" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelEstado" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -109,7 +114,7 @@
                   <Component id="btn_Guardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_Salir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -182,7 +187,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="-----------"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_Guardar">
