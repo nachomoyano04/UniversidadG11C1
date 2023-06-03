@@ -9,6 +9,8 @@ import controladoras.AlumnoData;
 import controladoras.InscripcionData;
 import entidades.Alumno;
 import entidades.Inscripcion;
+import entidades.Materia;
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -107,21 +109,19 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(btnGuardar)
-                        .addGap(61, 61, 61)
-                        .addComponent(btnSalir)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(161, 161, 161)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(btnGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,6 +157,14 @@ public class VistaCargaNotas extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
+        Inscripcion insc = new Inscripcion();
+        InscripcionData id = new InscripcionData();
+        Alumno alumno = (Alumno) jComboBox1.getSelectedItem();
+        
+        double notaMateria = Double.parseDouble(tablaMaterias.getValueAt(tablaMaterias.getSelectedRow(), 2).toString());
+        int idMateria = parseInt(tablaMaterias.getValueAt(tablaMaterias.getSelectedRow(), 0).toString());
+        insc.setNota(notaMateria);
+        id.actualizarNota(alumno.getId_alumno(), idMateria, notaMateria);
     }//GEN-LAST:event_btnGuardarActionPerformed
         
   
